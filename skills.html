@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prabeen-Skills</title>
+<link rel="icon" type="image/png" href="./img/logo.jpeg">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#1a237e',secondary:'#2196f3',accent:'#7c4dff',lavender:'#e6e6fa'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+  <!-- Alpine.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Poppins', sans-serif;
+scroll-behavior: smooth;
+}
+
+.nav-link {
+position: relative;
+}
+.nav-link::after {
+content: '';
+position: absolute;
+width: 0;
+height: 2px;
+bottom: -4px;
+left: 0;
+background: #e6e6fa;
+transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+width: 100%;
+}
+.active-link::after {
+width: 100%;
+}
+
+/* New Skills Section Styles */
+.skill-category {
+ 
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.skill-category:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.25);
+}
+
+.skill-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  margin: 8px 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+}
+
+.skill-item:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateX(5px);
+}
+
+.skill-item i {
+  font-size: 20px;
+  margin-right: 12px;
+  width: 24px;
+  text-align: center;
+}
+
+/* Animated progress bars */
+.progress-container {
+  height: 6px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 1.5s ease-in-out;
+}
+
+/* Floating animation */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Glass morphism effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Video Background Styles */
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.video-background video {
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+}
+</style>
+</head>
+<body class="bg-gray-50">
+
+  <div class="video-background">
+    <video autoplay muted loop id="bg-video">
+        <source src="./img/effect.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    <div class="video-overlay"></div>
+</div>
+
+<!-- Navigation Bar -->
+<nav class="fixed top-0 left-0 w-full z-50 shadow-md" style="background: linear-gradient(to right, #df47cb, #7c4dff)";>
+    <div class="container mx-auto px-6 py-3 flex items-center justify-between">
+      <a href="#" class="text-white font-['Pacifico'] text-2xl">Prabeen</a>
+      
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="index.html" class="nav-link text-white hover:text-lavender transition-colors ">Home</a>
+        <a href="about.html" class="nav-link text-white hover:text-lavender transition-colors ">About</a>
+        <a href="resume.html" class="nav-link text-white hover:text-lavender transition-colors">Resume</a>
+        <a href="skills.html" class="nav-link text-white hover:text-lavender transition-colors active-link">Skills</a>
+        <a href="projects.html" class="nav-link text-white hover:text-lavender transition-colors ">Projects</a>
+        <a href="certificates.html" class="nav-link text-white hover:text-lavender transition-colors ">Certificates</a>
+        <a href="contact.html" class="nav-link text-white hover:text-lavender transition-colors ">Contact</a>
+      </div>
+      
+      <div class="flex items-center gap-4">
+        <button id="ExploitButton" class="hidden md:block bg-white text-primary px-6 py-2 !rounded-button font-medium hover:bg-lavender transition-colors whitespace-nowrap"><a href="sign-in.html" target="_blank">Exploit</a></button>
+        
+        <!-- Mobile Toggle Button -->
+        <button id="mobile-menu-button" class="md:hidden w-8 h-8 flex items-center justify-center text-white cursor-pointer">
+          <i class="ri-menu-line ri-lg" id="menu-icon"></i>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu (Hidden by default) -->
+    <div id="mobile-menu" class="md:hidden fixed top-0 right-0 h-full w-64 bg-gradient-to-b from-primary to-accent shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-50">
+      <div class="flex justify-end p-4">
+        <button id="close-menu-button" class="w-8 h-8 flex items-center justify-center text-white cursor-pointer">
+          <i class="ri-close-line ri-lg"></i>
+        </button>
+      </div>
+      <div class="flex flex-col space-y-6 px-6 py-4">
+        <a href="index.html" class="nav-link text-white hover:text-lavender transition-colors ">Home</a>
+        <a href="about.html" class="nav-link text-white hover:text-lavender transition-colors">About</a>
+        <a href="resume.html" class="nav-link text-white hover:text-lavender transition-colors ">Resume</a>
+        <a href="skills.html" class="nav-link text-white hover:text-lavender transition-colors active-link">Skills</a>
+        <a href="projects.html" class="nav-link text-white hover:text-lavender transition-colors ">Projects</a>
+        <a href="certificates.html" class="nav-link text-white hover:text-lavender transition-colors">Certificates</a>
+        <a href="contact.html" class="nav-link text-white hover:text-lavender transition-colors ">Contact</a>
+        <button id="mobile-ExploitButton" class="bg-white text-primary px-6 py-2 rounded-button font-medium hover:bg-lavender transition-colors whitespace-nowrap w-full"><a href="sign-in.html" target="_blank">Exploit</a></button>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Overlay (Hidden by default) -->
+  <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
+<!-- Skills Section -->
+<section id="skills" class="py-20 px-4">
+    <div class="container mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-center mb-16 text-gray-800 relative">
+            <span class="relative z-10 px-4 bg-white">My <span class="text-primary">Skills</span></span>
+            <span class="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent -z-1"></span>
+          </h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">Here's a comprehensive overview of my technical skills and expertise across various domains.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Front-end Development -->
+            <div class="skill-category p-8 floating">
+                <div class="skill-icon bg-gradient-to-br from-blue-500 to-indigo-600 text-white">
+                    <i class="ri-computer-line"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-6 text-gray-800">Front-end Development</h3>
+                <div class="space-y-4">
+                    <div class="skill-item">
+                        <i class="ri-html5-fill text-orange-500"></i>
+                        <div class="flex-1">
+                            <div class="flex justify-between">
+                                <span class="font-medium">HTML5</span>
+                                <span class="text-gray-500">100%</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar bg-orange-500" style="width: 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <i class="ri-css3-fill text-blue-500"></i>
+                        <div class="flex-1">
+                            <div class="flex justify-between">
+                                <span class="font-medium">CSS3</span>
+                                <span class="text-gray-500">100%</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar bg-blue-500" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <i class="ri-bootstrap-fill text-purple-500"></i>
+                        <div class="flex-1">
+                            <div class="flex justify-between">
+                                <span class="font-medium">Bootstrap</span>
+                                <span class="text-gray-500">100%</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar bg-purple-500" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <i class="ri-javascript-fill text-yellow-500"></i>
+                        <div class="flex-1">
+                            <div class="flex justify-between">
+                                <span class="font-medium">JavaScript</span>
+                                <span class="text-gray-500">80%</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar bg-yellow-500" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Back-end Development -->
+            <div class="skill-category p-8 floating" style="animation-delay: 0.2s">
+                <div class="skill-icon bg-gradient-to-br from-purple-500 to-pink-600 text-white">
+                    <i class="ri-server-line"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-6 text-gray-800">Back-end Development</h3>
+                <div class="space-y-4">
+                    <div class="skill-item">
+                        <i class="ri-php-fill text-indigo-500"></i>
+                        <div class="flex-1">
+                            <div class="flex justify-between">
+                                <span class="font-medium">PHP</span>
+                                <span class="text-gray-500">95%</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar bg-indigo-500" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <i class="ri-python-fill text-blue-400"></i>
+                        <div class="flex-1">
+                            <div class="flex justify-between">
+                                <span class="font-medium">Python</span>
+                                <span class="text-gray-500">85%</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar bg-blue-400" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="skill-item">
+                        <i class="ri-python-fill text-blue-400"></i>
+                        <div class="flex-1">
+                            <div class="flex justify-between">
+                                <span class="font-medium">C#</span>
+                                <span class="text-gray-500">95%</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar bg-blue-400" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div> <div class="skill-item">
+                        <i class="ri-python-fill text-blue-400"></i>
+                        <div class="flex-1">
+                            <div class="flex justify-between">
+                                <span class="font-medium">Java</span>
+                                <span class="text-gray-500">80%</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar bg-blue-400" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div> <div class="skill-item">
+                        <i class="ri-python-fill text-blue-400"></i>
+                        <div class="flex-1">
+                            <div class="flex justify-between">
+                                <span class="font-medium">Node.js</span>
+                                <span class="text-gray-500">70%</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar bg-blue-400" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Database -->
+            <div class="skill-category p-8 floating">
+                <div class="skill-icon bg-gradient-to-br from-amber-500 to-orange-600 text-white">
+                    <i class="ri-database-2-line"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-6 text-gray-800">Database</h3>
+                <div class="space-y-4">
+                    <div class="skill-item">
+                        <i class="ri-database-2-fill text-blue-500"></i>
+                        <div class="flex-1">
+                            <div class="flex justify-between">
+                                <span class="font-medium">MySQL</span>
+                                <span class="text-gray-500">85%</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar bg-blue-500" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <i class="ri-database-2-fill text-gray-500"></i>
+                        <div class="flex-1">
+                            <div class="flex justify-between">
+                                <span class="font-medium">SQLite</span>
+                                <span class="text-gray-500">75%</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar bg-gray-500" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <i class="ri-database-2-fill text-green-500"></i>
+                        <div class="flex-1">
+                            <div class="flex justify-between">
+                                <span class="font-medium">MongoDB</span>
+                                <span class="text-gray-500">75%</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar bg-green-500" style="width: 65%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-category p-8 floating" style="animation-delay: 0.2s">
+    <div class="skill-icon bg-gradient-to-br from-rose-500 to-pink-600 text-white">
+        <i class="ri-shield-keyhole-line"></i> <!-- Main pentesting icon -->
+    </div>
+    <h3 class="text-xl font-bold mb-6 text-gray-800">Pentesting</h3>
+    <div class="space-y-4">
+        <div class="skill-item">
+            <i class="ri-terminal-line text-pink-500"></i>
+            <div class="flex-1">
+                <div class="flex justify-between">
+                    <span class="font-medium">Kali Linux/BlackArch/Parrot</span>
+                    <span class="text-gray-500">90%</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar bg-pink-500" style="width: 90%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <i class="ri-bug-line text-blue-400"></i>
+            <div class="flex-1">
+                <div class="flex justify-between">
+                    <span class="font-medium">Burp Suite</span>
+                    <span class="text-gray-500">85%</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar bg-blue-400" style="width: 85%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <i class="ri-spy-line text-green-500"></i>
+            <div class="flex-1">
+                <div class="flex justify-between">
+                    <span class="font-medium">Metasploit</span>
+                    <span class="text-gray-500">80%</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar bg-green-500" style="width: 80%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <i class="ri-search-eye-line text-purple-500"></i>
+            <div class="flex-1">
+                <div class="flex justify-between">
+                    <span class="font-medium">Nmap</span>
+                    <span class="text-gray-500">75%</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar bg-purple-500" style="width: 75%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <i class="ri-network-chart-line text-yellow-500"></i>
+            <div class="flex-1">
+                <div class="flex justify-between">
+                    <span class="font-medium">Wireshark</span>
+                    <span class="text-gray-500">70%</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar bg-yellow-500" style="width: 70%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <i class="ri-global-line text-orange-500"></i>
+            <div class="flex-1">
+                <div class="flex justify-between">
+                    <span class="font-medium">OWASP ZAP</span>
+                    <span class="text-gray-500">65%</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar bg-orange-500" style="width: 65%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <i class="ri-tools-line text-red-400"></i>
+            <div class="flex-1">
+                <div class="flex justify-between">
+                    <span class="font-medium">Hydra</span>
+                    <span class="text-gray-500">60%</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar bg-red-400" style="width: 60%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <i class="ri-cloud-windy-line text-rose-400"></i>
+            <div class="flex-1">
+                <div class="flex justify-between">
+                    <span class="font-medium">Nikto</span>
+                    <span class="text-gray-500">70%</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar bg-rose-400" style="width: 70%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <i class="ri-eye-line text-indigo-400"></i>
+            <div class="flex-1">
+                <div class="flex justify-between">
+                    <span class="font-medium">Recon-ng</span>
+                    <span class="text-gray-500">65%</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar bg-indigo-400" style="width: 65%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <i class="ri-lock-password-line text-lime-500"></i>
+            <div class="flex-1">
+                <div class="flex justify-between">
+                    <span class="font-medium">John the Ripper</span>
+                    <span class="text-gray-500">60%</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar bg-lime-500" style="width: 60%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <i class="ri-database-2-line text-cyan-500"></i>
+            <div class="flex-1">
+                <div class="flex justify-between">
+                    <span class="font-medium">SQLmap</span>
+                    <span class="text-gray-500">70%</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar bg-cyan-500" style="width: 70%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <i class="ri-wifi-line text-teal-400"></i>
+            <div class="flex-1">
+                <div class="flex justify-between">
+                    <span class="font-medium">Aircrack-ng</span>
+                    <span class="text-gray-500">65%</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar bg-teal-400" style="width: 65%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <i class="ri-folder-keyhole-line text-amber-400"></i>
+            <div class="flex-1">
+                <div class="flex justify-between">
+                    <span class="font-medium">Dirb</span>
+                    <span class="text-gray-500">60%</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar bg-amber-400" style="width: 60%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <i class="ri-robot-2-line text-fuchsia-500"></i>
+            <div class="flex-1">
+                <div class="flex justify-between">
+                    <span class="font-medium">Setoolkit</span>
+                    <span class="text-gray-500">65%</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar bg-fuchsia-500" style="width: 65%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+            <!-- Games -->
+          <div class="skill-category p-8 floating" style="animation-delay: 0.4s">
+    <div class="skill-icon bg-gradient-to-br from-green-500 to-teal-600 text-white">
+        <i class="ri-gamepad-line"></i> <!-- Updated icon here -->
+    </div>
+ <h3 class="text-xl font-bold mb-6 text-gray-800">Esports</h3>
+  <div class="space-y-4">
+    <div class="skill-item">
+      <i class="ri-sword-line text-red-500"></i>
+      <div class="flex-1">
+        <div class="flex justify-between">
+          <span class="font-medium">Call of Duty: Warzone</span>
+          <span class="text-gray-500">95%</span>
+        </div>
+        <div class="progress-container">
+          <div class="progress-bar bg-red-500" style="width: 95%"></div>
+        </div>
+      </div>
+    </div>
+    <div class="skill-item">
+      <i class="ri-shield-cross-line text-blue-600"></i>
+      <div class="flex-1">
+        <div class="flex justify-between">
+          <span class="font-medium">PUBG Mobile Global</span>
+          <span class="text-gray-500">90%</span>
+        </div>
+        <div class="progress-container">
+          <div class="progress-bar bg-blue-600" style="width: 90%"></div>
+        </div>
+      </div>
+    </div>
+    <div class="skill-item">
+      <i class="ri-crosshair-2-line text-purple-500"></i>
+      <div class="flex-1">
+        <div class="flex justify-between">
+          <span class="font-medium">PUBG Mobile KR</span>
+          <span class="text-gray-500">100%</span>
+        </div>
+        <div class="progress-container">
+          <div class="progress-bar bg-purple-500" style="width: 85%"></div>
+        </div>
+      </div>
+    </div>
+    <div class="skill-item">
+      <i class="ri-fire-line text-orange-500"></i>
+      <div class="flex-1">
+        <div class="flex justify-between">
+          <span class="font-medium">PUBG: New State</span>
+          <span class="text-gray-500">80%</span>
+        </div>
+        <div class="progress-container">
+          <div class="progress-bar bg-orange-500" style="width: 80%"></div>
+        </div>
+      </div>
+    </div>
+    <div class="skill-item">
+      <i class="ri-hammer-line text-yellow-600"></i>
+      <div class="flex-1">
+        <div class="flex justify-between">
+          <span class="font-medium">Apex Legends</span>
+          <span class="text-gray-500">75%</span>
+        </div>
+        <div class="progress-container">
+          <div class="progress-bar bg-yellow-600" style="width: 75%"></div>
+        </div>
+      </div>
+    </div>
+    <div class="skill-item">
+      <i class="ri-radar-line text-teal-500"></i>
+      <div class="flex-1">
+        <div class="flex justify-between">
+          <span class="font-medium">Valorant</span>
+          <span class="text-gray-500">70%</span>
+        </div>
+        <div class="progress-container">
+          <div class="progress-bar bg-teal-500" style="width: 70%"></div>
+        </div>
+      </div>
+    </div>
+    <div class="skill-item">
+      <i class="ri-broadcast-line text-pink-500"></i>
+      <div class="flex-1">
+        <div class="flex justify-between">
+          <span class="font-medium">CS:GO</span>
+          <span class="text-gray-500">65%</span>
+        </div>
+        <div class="progress-container">
+          <div class="progress-bar bg-pink-500" style="width: 65%"></div>
+        </div>
+      </div>
+    </div>
+    </div>
+</div>
+
+
+            
+
+        <div class="skill-category p-8 floating" style="animation-delay: 0.2s">
+    <div class="skill-icon bg-gradient-to-br from-rose-500 to-pink-600 text-white">
+        <i class="ri-video-add-line"></i>
+         <!-- Main videography icon -->
+    </div>
+    <h3 class="text-xl font-bold mb-6 text-gray-800">Videography</h3>
+    <div class="space-y-4">
+        <div class="skill-item">
+            <i class="ri-scissors-line text-pink-500"></i>
+            <div class="flex-1">
+                <div class="flex justify-between">
+                    <span class="font-medium">Adobe Premiere Pro</span>
+                    <span class="text-gray-500">90%</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar bg-pink-500" style="width: 90%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <i class="ri-magic-line text-blue-400"></i>
+            <div class="flex-1">
+                <div class="flex justify-between">
+                    <span class="font-medium">After Effects</span>
+                    <span class="text-gray-500">85%</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar bg-blue-400" style="width: 85%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <i class="ri-music-2-line text-green-500"></i>
+            <div class="flex-1">
+                <div class="flex justify-between">
+                    <span class="font-medium">Adobe Audition</span>
+                    <span class="text-gray-500">75%</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar bg-green-500" style="width: 75%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <i class="ri-mobile-camera-line text-purple-500"></i>
+            <div class="flex-1">
+                <div class="flex justify-between">
+                    <span class="font-medium">CapCut & VN</span>
+                    <span class="text-gray-500">80%</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar bg-purple-500" style="width: 80%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <i class="ri-film-line text-yellow-500"></i>
+            <div class="flex-1">
+                <div class="flex justify-between">
+                    <span class="font-medium">DaVinci Resolve</span>
+                    <span class="text-gray-500">70%</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar bg-yellow-500" style="width: 70%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <i class="ri-shapes-line text-orange-500"></i>
+            <div class="flex-1">
+                <div class="flex justify-between">
+                    <span class="font-medium">Blender (3D)</span>
+                    <span class="text-gray-500">65%</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar bg-orange-500" style="width: 65%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <i class="ri-play-circle-line text-red-400"></i>
+            <div class="flex-1">
+                <div class="flex justify-between">
+                    <span class="font-medium">Filmora</span>
+                    <span class="text-gray-500">60%</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar bg-red-400" style="width: 60%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <i class="ri-smartphone-line text-rose-400"></i>
+            <div class="flex-1">
+                <div class="flex justify-between">
+                    <span class="font-medium">KineMaster</span>
+                    <span class="text-gray-500">75%</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar bg-rose-400" style="width: 75%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <i class="ri-slideshow-2-line text-indigo-400"></i>
+            <div class="flex-1">
+                <div class="flex justify-between">
+                    <span class="font-medium">Alight Motion</span>
+                    <span class="text-gray-500">70%</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar bg-indigo-400" style="width: 70%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+            
+           
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<div class="flex justify-center space-x-4 mt-8" style="padding-bottom: 80px !important;"> 
+   
+  <!-- Hire Me Button -->
+<div x-data="{ showPopup: false }" class="inline-block">
+<button @click="showPopup = true"
+ class="bg-gradient-to-r from-primary to-accent text-white px-8 py-3 !rounded-button font-medium hover:shadow-lg transform hover:-translate-y-1 transition-all whitespace-nowrap h-[50px] flex items-center justify-center">
+ Hire Me
+ <img src="./img/arrow.png" 
+      alt="Arrow" 
+      class="d-block d-lg-none"
+      style="position: absolute; width: 38px; height: 46px; bottom: -36px; right: -12px; pointer-events: none;">
+     </button>
+</button>
+
+<!-- Modal Popup -->
+<div x-show="showPopup"
+  x-transition
+  class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60"
+  x-cloak
+  @click.self="showPopup = false">
+
+ <div class="bg-white rounded-xl shadow-2xl w-full max-w-sm p-6 space-y-4 text-center">
+     <h2 class="text-xl font-semibold text-gray-800 mb-4">Let's Connect</h2>
+
+     <a href="9813349397"
+        target="_blank"
+        class="block w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition">
+         💬 Telegram Chat
+     </a>
+
+     <a href="mailto:iglhoraa@gmail"
+        class="block w-full bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition">
+         📧 Send Email
+     </a>
+
+     <button @click="showPopup = false"
+             class="mt-4 text-sm text-gray-500 hover:underline">
+         ❌ Close
+          <!-- Arrow image placed inside button -->
+      
+ </div>
+</div>
+</div>
+     
+
+   </a>
+   <a href="projects.html"  class="inline-flex">
+       <button class="border-2 border-primary text-primary px-8 py-3 !rounded-button font-medium hover:bg-primary hover:text-white transition-colors whitespace-nowrap h-[50px] flex items-center justify-center">
+          projects
+       </button>
+   </a>
+</div>
+
+<!-- Footer -->
+<footer class="text-white py-12" style="background: linear-gradient(to right, #d62ca0, #7c4dff)";>
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Social Media (All Icons) -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">Follow Me</h3>
+        <div class="grid grid-cols-4 gap-3">
+            <!-- Facebook -->
+          <a href="https://www.facebook.com/prabeen.923860" target="_blank" class="p-2 bg-blue-600 hover:bg-blue-700 rounded-full flex justify-center items-center transition-colors w-10 h-10">
+            <i class="ri-facebook-line"></i>
+          </a>
+          <!-- LinkedIn -->
+           <a href="https://www.linkedin.com/in/prabeen-%E2%96%B7-ab2859333/" target="_blank" class="p-2 bg-blue-800 hover:bg-blue-900 rounded-full flex justify-center items-center transition-colors w-10 h-10">
+            <i class="ri-linkedin-line"></i>
+          </a>
+          <!-- Telegram -->
+          <a href="9813349397" target="_blank" class="p-2 bg-sky-500 hover:bg-sky-600 rounded-full flex justify-center items-center transition-colors w-10 h-10">
+            <i class="ri-telegram-line"></i>
+          </a> 
+          <!-- X -->
+           <a href="https://x.com/_Prabeen" target="_blank" class="p-2 bg-black hover:bg-gray-800 rounded-full flex justify-center items-center transition-colors w-10 h-10">
+  <i class="ri-twitter-x-line"></i>
+</a>
+        </div>
+      
+      </div>
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+        <ul class="space-y-2">
+          <li><a href="index.html" class="hover:text-indigo-300 transition-colors">Home</a></li>
+          <li><a href="about.html" class="hover:text-indigo-300 transition-colors">About</a></li>
+          <li><a href="projects.html" class="hover:text-indigo-300 transition-colors">Projects</a></li>
+          <li><a href="contact.html" class="hover:text-indigo-300 transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h3 class="text-xl font-bold mb-4 text-white">Get in Touch</h3>
+        <ul class="space-y-3">
+          <li class="flex items-center">
+            <i class="ri-mail-line mr-2 text-indigo-300"></i>
+            <a href="mailto:iglhoraa@gmail.com" class="text-white no-underline hover:no-underline">
+              iglhoraa@gmail.com
+            </a>
+          </li>
+          <li class="flex items-center">
+            <i class="ri-phone-line mr-2 text-indigo-300"></i>
+            <a href="tel:+9779813349397" class="text-white no-underline hover:no-underline">
+              +977 9813349397
+            </a>
+          </li>
+          <li class="flex items-center">
+            <i class="ri-map-pin-line mr-2 text-indigo-300"></i>
+            <a href="https://maps.app.goo.gl/wJ5MpP4ufX52VdAs5" target="_blank" class="text-white no-underline hover:no-underline">
+              Bhaktapur-44800 Bagmati, Nepal
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+    </div>
+
+    <!-- Copyright -->
+    <div class="mt-12 pt-6 border-t border-indigo-800 text-center">
+      <footer>
+  © 2023–2025 Prabeen. All rights reserved. 
+  <a href="/terms">Terms</a> • <a href="/privacy">Privacy</a> • <a href="/licenses">Licenses</a>
+</footer>
+    </div>
+  </div>
+</footer>
+
+<script>
+    // Mobile menu functionality
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const closeMenuButton = document.getElementById('close-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const overlay = document.getElementById('overlay');
+    const menuIcon = document.getElementById('menu-icon');
+    
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.remove('translate-x-full');
+      mobileMenu.classList.add('translate-x-0');
+      overlay.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    });
+    
+    closeMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.remove('translate-x-0');
+      mobileMenu.classList.add('translate-x-full');
+      overlay.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    });
+    
+    overlay.addEventListener('click', () => {
+      mobileMenu.classList.remove('translate-x-0');
+      mobileMenu.classList.add('translate-x-full');
+      overlay.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    });
+    
+    // Close menu when a nav link is clicked
+    document.querySelectorAll('#mobile-menu .nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('translate-x-0');
+        mobileMenu.classList.add('translate-x-full');
+        overlay.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      });
+    });
+    
+    // Exploit button click handler (both desktop and mobile)
+    const ExploitButton = document.getElementById('ExploitButton');
+    const mobileExploitButton = document.getElementById('mobile-ExploitButton');
+    
+    function handleExploit() {
+      // Add your Exploit logic here
+      console.log('Exploit clicked');
+    }
+    
+    if (ExploitButton) ExploitButton.addEventListener('click', handleExploit);
+    if (mobileExploitButton) mobileExploitButton.addEventListener('click', handleExploit);
+
+    // Animate progress bars when they come into view
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const progressBars = entry.target.querySelectorAll('.progress-bar');
+                progressBars.forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 100);
+                });
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.skill-category').forEach(card => {
+        observer.observe(card);
+    });
+</script>
+</body>
+</html>

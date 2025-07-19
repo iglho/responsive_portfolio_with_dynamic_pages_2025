@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prabeen-certificates</title>
+<link rel="icon" type="image/png" href="./img/logo.jpeg">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#1a237e',secondary:'#2196f3',accent:'#7c4dff',lavender:'#e6e6fa'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Poppins', sans-serif;
+scroll-behavior: smooth;
+}
+.preloader {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: #0f172a;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+z-index: 9999;
+transition: opacity 0.5s ease-out;
+}
+.preloader-text {
+font-family: 'Pacifico', serif;
+font-size: 3rem;
+color: white;
+margin-bottom: 2rem;
+background: linear-gradient(to right, #2196f3, #7c4dff);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+.progress-container {
+width: 300px;
+height: 8px;
+background: rgba(255, 255, 255, 0.1);
+border-radius: 4px;
+overflow: hidden;
+margin-bottom: 1rem;
+}
+.progress-bar {
+height: 100%;
+width: 0%;
+background: linear-gradient(to right, #2196f3, #7c4dff);
+transition: width 0.5s ease;
+}
+.progress-text {
+color: white;
+font-size: 1rem;
+}
+.nav-link {
+position: relative;
+}
+.nav-link::after {
+content: '';
+position: absolute;
+width: 0;
+height: 2px;
+bottom: -4px;
+left: 0;
+background: #e6e6fa;
+transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+width: 100%;
+}
+.active-link::after {
+width: 100%;
+}
+.skill-card {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.skill-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 25px rgba(124, 77, 255, 0.2);
+}
+.project-card {
+overflow: hidden;
+position: relative;
+}
+.project-card {
+position: relative;
+}
+.project-card img {
+transition: opacity 0.3s ease;
+}
+.project-card:hover img {
+opacity: 0.1;
+}
+.project-overlay {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 64%;
+display: flex;
+justify-content: center;
+align-items: center;
+opacity: 0;
+transition: opacity 0.3s ease;
+}
+.project-card:hover .project-overlay {
+opacity: 1;
+}
+.certificate-card {
+overflow: hidden;
+position: relative;
+}
+.certificate-overlay {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(26, 35, 126, 0.9);
+display: flex;
+justify-content: center;
+align-items: center;
+opacity: 0;
+transition: opacity 0.3s ease;
+}
+.certificate-card:hover .certificate-overlay {
+opacity: 1;
+}
+.modal {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.8);
+z-index: 1000;
+justify-content: center;
+align-items: center;
+}
+.modal-content {
+position: relative;
+max-width: 90%;
+max-height: 90%;
+}
+.close-modal {
+position: absolute;
+top: -40px;
+right: 0;
+color: white;
+font-size: 30px;
+cursor: pointer;
+}
+.service-card {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 25px rgba(124, 77, 255, 0.2);
+}
+.social-icon {
+transition: transform 0.3s ease, color 0.3s ease;
+}
+.social-icon:hover {
+transform: translateY(-3px);
+}
+.profile-image {
+position: relative;
+transition: transform 0.3s ease;
+}
+.profile-image:hover {
+transform: scale(1.03);
+}
+.experience-badge {
+position: absolute;
+bottom: 20px;
+right: 20px;
+background: linear-gradient(to right, #2196f3, #7c4dff);
+color: white;
+padding: 8px 16px;
+border-radius: 20px;
+font-weight: 600;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+animation: badgeMove 2s ease-in-out infinite;
+}
+@keyframes badgeMove {
+0% {
+transform: translateX(0);
+}
+50% {
+transform: translateX(-20px);
+}
+100% {
+transform: translateX(0);
+}
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+.custom-checkbox {
+appearance: none;
+-webkit-appearance: none;
+width: 20px;
+height: 20px;
+border: 2px solid #2196f3;
+border-radius: 4px;
+outline: none;
+cursor: pointer;
+position: relative;
+}
+.custom-checkbox:checked {
+background-color: #2196f3;
+}
+.custom-checkbox:checked::after {
+content: '';
+position: absolute;
+top: 3px;
+left: 6px;
+width: 6px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+.custom-switch {
+position: relative;
+display: inline-block;
+width: 50px;
+height: 24px;
+}
+.custom-switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.switch-slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #ccc;
+transition: .4s;
+border-radius: 34px;
+}
+.switch-slider:before {
+position: absolute;
+content: "";
+height: 16px;
+width: 16px;
+left: 4px;
+bottom: 4px;
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+input:checked + .switch-slider {
+background-color: #2196f3;
+}
+input:checked + .switch-slider:before {
+transform: translateX(26px);
+
+}
+/* Video Background Styles */
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.video-background video {
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+ 
+}
+
+.home-content {
+  position: relative;
+  z-index: 1;
+}
+</style>
+</head>
+<body class="bg-white">
+
+  <div class="video-background">
+    <video autoplay muted loop id="bg-video">
+        <source src="./img/effect.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    <div class="video-overlay"></div>
+</div>
+
+<!-- Navigation Bar -->
+<nav class="fixed top-0 left-0 w-full z-50 shadow-md" style="background: linear-gradient(to right, #eb9d4a, #7c4dff)";>
+    <div class="container mx-auto px-6 py-3 flex items-center justify-between">
+      <a href="#" class="text-white font-['Pacifico'] text-2xl">Prabeen</a>
+      
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="index.html" class="nav-link text-white hover:text-lavender transition-colors ">Home</a>
+        <a href="about.html" class="nav-link text-white hover:text-lavender transition-colors ">About</a>
+        <a href="resume.html" class="nav-link text-white hover:text-lavender transition-colors">Resume</a>
+        <a href="skills.html" class="nav-link text-white hover:text-lavender transition-colors">Skills</a>
+        <a href="projects.html" class="nav-link text-white hover:text-lavender transition-colors">Projects</a>
+        <a href="certificates.html" class="nav-link text-white hover:text-lavender transition-colors active-link">Certificates</a>
+        <a href="contact.html" class="nav-link text-white hover:text-lavender transition-colors">Contact</a>
+      </div>
+      
+      <div class="flex items-center gap-4">
+        <button id="ExploitButton" class="hidden md:block bg-white text-primary px-6 py-2 !rounded-button font-medium hover:bg-lavender transition-colors whitespace-nowrap"><a href="sign-in.html" target="_blank">Exploit</a></button>
+        
+        <!-- Mobile Toggle Button -->
+        <button id="mobile-menu-button" class="md:hidden w-8 h-8 flex items-center justify-center text-white cursor-pointer">
+          <i class="ri-menu-line ri-lg" id="menu-icon"></i>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu (Hidden by default) -->
+    <div id="mobile-menu" class="md:hidden fixed top-0 right-0 h-full w-64 bg-gradient-to-b from-primary to-accent shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-50">
+      <div class="flex justify-end p-4">
+        <button id="close-menu-button" class="w-8 h-8 flex items-center justify-center text-white cursor-pointer">
+          <i class="ri-close-line ri-lg"></i>
+        </button>
+      </div>
+      <div class="flex flex-col space-y-6 px-6 py-4">
+        <a href="index.html" class="nav-link text-white hover:text-lavender transition-colors">Home</a>
+        <a href="about.html" class="nav-link text-white hover:text-lavender transition-colors">About</a>
+        <a href="resume.html" class="nav-link text-white hover:text-lavender transition-colors">Resume</a>
+        <a href="skills.html" class="nav-link text-white hover:text-lavender transition-colors">Skills</a>
+        <a href="projects.html" class="nav-link text-white hover:text-lavender transition-colors">Projects</a>
+        <a href="certificates.html" class="nav-link text-white hover:text-lavender transition-colors  active-link">Certificates</a>
+        <a href="contact.html" class="nav-link text-white hover:text-lavender transition-colors">Contact</a>
+        <button id="mobile-ExploitButton" class="bg-white text-primary px-6 py-2 rounded-button font-medium hover:bg-lavender transition-colors whitespace-nowrap w-full"><a href="sign-in.html" target="_blank">Exploit</a></button>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Overlay (Hidden by default) -->
+  <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
+  <!-- Certificates Section -->
+<!-- Certificates Section -->
+<section id="certificates" class="py-20">
+  <div class="container mx-auto px-6">
+    <h2 class="text-4xl font-bold text-center mb-16 text-gray-800 relative">
+      <span class="relative z-10 px-4 bg-white">My <span class="text-primary">Certificates</span></span>
+      <span class="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent -z-1"></span>
+    </h2>
+    
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+ <!-- Certificate 7 -->
+ <div class="certificate-card group relative overflow-hidden rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl">
+  <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 z-10"></div>
+  <img src="./img/oscar-certificate.jpg" alt="Full Stack Python Developer" class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105" />
+  
+  <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 z-20">
+    <button class="view-certificate bg-white text-primary px-6 py-3 rounded-full font-medium hover:bg-lavender transition-all transform hover:scale-105 shadow-lg" data-certificate="certificate7">
+      View Certificate <i class="ri-arrow-right-line ml-2"></i>
+    </button>
+  </div>
+  
+  <div class="p-6 bg-white relative z-30">
+    <div class="flex items-center justify-between mb-2">
+      <h3 class="text-xl font-semibold text-gray-800">Full Stack Python Developer</h3>
+      <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">Course</span>
+    </div>
+    <p class="text-gray-600">Oscar Computer Education</p>
+    <div class="mt-4 flex justify-between items-center">
+      <span class="text-xs text-gray-500">Issued</span>
+      <div class="flex space-x-2">
+        <span class="w-3 h-3 rounded-full bg-primary animate-pulse"></span>
+        <span class="w-3 h-3 rounded-full bg-secondary animate-pulse delay-100"></span>
+        <span class="w-3 h-3 rounded-full bg-accent animate-pulse delay-200"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Certificate 8 -->
+<div class="certificate-card group relative overflow-hidden rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl">
+  <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 z-10"></div>
+  <img src="./img/oscar-certificate1.jpg" alt="Information technology Foundation" class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105" />
+  
+  <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 z-20">
+    <button class="view-certificate bg-white text-primary px-6 py-3 rounded-full font-medium hover:bg-lavender transition-all transform hover:scale-105 shadow-lg" data-certificate="certificate8">
+      View Certificate <i class="ri-arrow-right-line ml-2"></i>
+    </button>
+  </div>
+  
+  <div class="p-6 bg-white relative z-30">
+    <div class="flex items-center justify-between mb-2">
+      <h3 class="text-xl font-semibold text-gray-800">Information technology Foundation</h3>
+      <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">Course</span>
+    </div>
+    <p class="text-gray-600">Oscar Computer Education</p>
+    <div class="mt-4 flex justify-between items-center">
+      <span class="text-xs text-gray-500">Issued</span>
+      <div class="flex space-x-2">
+        <span class="w-3 h-3 rounded-full bg-primary animate-pulse"></span>
+        <span class="w-3 h-3 rounded-full bg-secondary animate-pulse delay-100"></span>
+        <span class="w-3 h-3 rounded-full bg-accent animate-pulse delay-200"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+      <!-- Certificate 1 -->
+      <div class="certificate-card group relative overflow-hidden rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 z-10"></div>
+        <img src="./img/cer-1.png" alt="Machine learning using Python" class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105" />
+        
+        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 z-20">
+          <button class="view-certificate bg-white text-primary px-6 py-3 rounded-full font-medium hover:bg-lavender transition-all transform hover:scale-105 shadow-lg" data-certificate="certificate1">
+            View Certificate <i class="ri-arrow-right-line ml-2"></i>
+          </button>
+        </div>
+        
+        <div class="p-6 bg-white relative z-30">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xl font-semibold text-gray-800">Machine learning using Python</h3>
+            <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">SkillUP</span>
+          </div>
+          <p class="text-gray-600">SimpliLearn</p>
+          <div class="mt-4 flex justify-between items-center">
+            <span class="text-xs text-gray-500">Issued</span>
+            <div class="flex space-x-2">
+              <span class="w-3 h-3 rounded-full bg-primary animate-pulse"></span>
+              <span class="w-3 h-3 rounded-full bg-secondary animate-pulse delay-100"></span>
+              <span class="w-3 h-3 rounded-full bg-accent animate-pulse delay-200"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+       <!-- Certificate 11 -->
+      <div class="certificate-card group relative overflow-hidden rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 z-10"></div>
+        <img src="./img/cer-5.jpeg" alt="Introduction to Prompt Engineering" class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105" />
+        
+        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 z-20">
+          <button class="view-certificate bg-white text-primary px-6 py-3 rounded-full font-medium hover:bg-lavender transition-all transform hover:scale-105 shadow-lg" data-certificate="certificate5">
+            View Certificate <i class="ri-arrow-right-line ml-2"></i>
+          </button>
+        </div>
+        
+        <div class="p-6 bg-white relative z-30">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xl font-semibold text-gray-800">Certified Ethical Hacker</h3>
+            <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">SkillUP</span>
+          </div>
+          <p class="text-gray-600">MindLuster</p>
+          <div class="mt-4 flex justify-between items-center">
+            <span class="text-xs text-gray-500">Issued</span>
+            <div class="flex space-x-2">
+              <span class="w-3 h-3 rounded-full bg-primary animate-pulse"></span>
+              <span class="w-3 h-3 rounded-full bg-secondary animate-pulse delay-100"></span>
+              <span class="w-3 h-3 rounded-full bg-accent animate-pulse delay-200"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+       <!-- Certificate 12 -->
+      <div class="certificate-card group relative overflow-hidden rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 z-10"></div>
+        <img src="./img/cer-5.jpeg" alt="Introduction to Prompt Engineering" class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105" />
+        
+        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 z-20">
+          <button class="view-certificate bg-white text-primary px-6 py-3 rounded-full font-medium hover:bg-lavender transition-all transform hover:scale-105 shadow-lg" data-certificate="certificate5">
+            View Certificate <i class="ri-arrow-right-line ml-2"></i>
+          </button>
+        </div>
+        
+        <div class="p-6 bg-white relative z-30">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xl font-semibold text-gray-800">Offensive Security Certified Professional</h3>
+            <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">SkillUP</span>
+          </div>
+          <p class="text-gray-600">OSCP</p>
+          <div class="mt-4 flex justify-between items-center">
+            <span class="text-xs text-gray-500">Issued</span>
+            <div class="flex space-x-2">
+              <span class="w-3 h-3 rounded-full bg-primary animate-pulse"></span>
+              <span class="w-3 h-3 rounded-full bg-secondary animate-pulse delay-100"></span>
+              <span class="w-3 h-3 rounded-full bg-accent animate-pulse delay-200"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+       <!-- Certificate 13 -->
+      <div class="certificate-card group relative overflow-hidden rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 z-10"></div>
+        <img src="./img/cer-5.jpeg" alt="Introduction to Prompt Engineering" class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105" />
+        
+        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 z-20">
+          <button class="view-certificate bg-white text-primary px-6 py-3 rounded-full font-medium hover:bg-lavender transition-all transform hover:scale-105 shadow-lg" data-certificate="certificate5">
+            View Certificate <i class="ri-arrow-right-line ml-2"></i>
+          </button>
+        </div>
+        
+        <div class="p-6 bg-white relative z-30">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xl font-semibold text-gray-800">Certified Ethical Hacker v12</h3>
+            <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">SkillUP</span>
+          </div>
+          <p class="text-gray-600">CEH</p>
+          <div class="mt-4 flex justify-between items-center">
+            <span class="text-xs text-gray-500">Issued</span>
+            <div class="flex space-x-2">
+              <span class="w-3 h-3 rounded-full bg-primary animate-pulse"></span>
+              <span class="w-3 h-3 rounded-full bg-secondary animate-pulse delay-100"></span>
+              <span class="w-3 h-3 rounded-full bg-accent animate-pulse delay-200"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+       <!-- Certificate 14 -->
+      <div class="certificate-card group relative overflow-hidden rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 z-10"></div>
+        <img src="./img/cer-5.jpeg" alt="Introduction to Prompt Engineering" class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105" />
+        
+        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 z-20">
+          <button class="view-certificate bg-white text-primary px-6 py-3 rounded-full font-medium hover:bg-lavender transition-all transform hover:scale-105 shadow-lg" data-certificate="certificate5">
+            View Certificate <i class="ri-arrow-right-line ml-2"></i>
+          </button>
+        </div>
+        
+        <div class="p-6 bg-white relative z-30">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xl font-semibold text-gray-800">Penetration Tester Level 1 </h3>
+            <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">SkillUP</span>
+          </div>
+          <p class="text-gray-600">TryHackMe</p>
+          <div class="mt-4 flex justify-between items-center">
+            <span class="text-xs text-gray-500">Issued</span>
+            <div class="flex space-x-2">
+              <span class="w-3 h-3 rounded-full bg-primary animate-pulse"></span>
+              <span class="w-3 h-3 rounded-full bg-secondary animate-pulse delay-100"></span>
+              <span class="w-3 h-3 rounded-full bg-accent animate-pulse delay-200"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+       <!-- Certificate 15 -->
+      <div class="certificate-card group relative overflow-hidden rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 z-10"></div>
+        <img src="./img/cer-5.jpeg" alt="Introduction to Prompt Engineering" class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105" />
+        
+        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 z-20">
+          <button class="view-certificate bg-white text-primary px-6 py-3 rounded-full font-medium hover:bg-lavender transition-all transform hover:scale-105 shadow-lg" data-certificate="certificate5">
+            View Certificate <i class="ri-arrow-right-line ml-2"></i>
+          </button>
+        </div>
+        
+        <div class="p-6 bg-white relative z-30">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xl font-semibold text-gray-800">Advance of Cyber 2019</h3>
+            <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">SkillUP</span>
+          </div>
+          <p class="text-gray-600">TryHackMe</p>
+          <div class="mt-4 flex justify-between items-center">
+            <span class="text-xs text-gray-500">Issued</span>
+            <div class="flex space-x-2">
+              <span class="w-3 h-3 rounded-full bg-primary animate-pulse"></span>
+              <span class="w-3 h-3 rounded-full bg-secondary animate-pulse delay-100"></span>
+              <span class="w-3 h-3 rounded-full bg-accent animate-pulse delay-200"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Certificate 15 -->
+      <div class="certificate-card group relative overflow-hidden rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 z-10"></div>
+        <img src="./img/cer-5.jpeg" alt="Introduction to Prompt Engineering" class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105" />
+        
+        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 z-20">
+          <button class="view-certificate bg-white text-primary px-6 py-3 rounded-full font-medium hover:bg-lavender transition-all transform hover:scale-105 shadow-lg" data-certificate="certificate5">
+            View Certificate <i class="ri-arrow-right-line ml-2"></i>
+          </button>
+        </div>
+        
+        <div class="p-6 bg-white relative z-30">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xl font-semibold text-gray-800">Advance of Cyber 2020</h3>
+            <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">SkillUP</span>
+          </div>
+          <p class="text-gray-600">TryHackMe</p>
+          <div class="mt-4 flex justify-between items-center">
+            <span class="text-xs text-gray-500">Issued</span>
+            <div class="flex space-x-2">
+              <span class="w-3 h-3 rounded-full bg-primary animate-pulse"></span>
+              <span class="w-3 h-3 rounded-full bg-secondary animate-pulse delay-100"></span>
+              <span class="w-3 h-3 rounded-full bg-accent animate-pulse delay-200"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+       <!-- Certificate 15 -->
+      <div class="certificate-card group relative overflow-hidden rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 z-10"></div>
+        <img src="./img/cer-5.jpeg" alt="Introduction to Prompt Engineering" class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105" />
+        
+        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 z-20">
+          <button class="view-certificate bg-white text-primary px-6 py-3 rounded-full font-medium hover:bg-lavender transition-all transform hover:scale-105 shadow-lg" data-certificate="certificate5">
+            View Certificate <i class="ri-arrow-right-line ml-2"></i>
+          </button>
+        </div>
+        
+        <div class="p-6 bg-white relative z-30">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xl font-semibold text-gray-800">Advance of Cyber 2021</h3>
+            <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">SkillUP</span>
+          </div>
+          <p class="text-gray-600">TryHackMe</p>
+          <div class="mt-4 flex justify-between items-center">
+            <span class="text-xs text-gray-500">Issued</span>
+            <div class="flex space-x-2">
+              <span class="w-3 h-3 rounded-full bg-primary animate-pulse"></span>
+              <span class="w-3 h-3 rounded-full bg-secondary animate-pulse delay-100"></span>
+              <span class="w-3 h-3 rounded-full bg-accent animate-pulse delay-200"></span>
+            </div>
+          </div>
+        </div>
+      </div> <!-- Certificate 15 -->
+      <div class="certificate-card group relative overflow-hidden rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 z-10"></div>
+        <img src="./img/cer-5.jpeg" alt="Introduction to Prompt Engineering" class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105" />
+        
+        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 z-20">
+          <button class="view-certificate bg-white text-primary px-6 py-3 rounded-full font-medium hover:bg-lavender transition-all transform hover:scale-105 shadow-lg" data-certificate="certificate5">
+            View Certificate <i class="ri-arrow-right-line ml-2"></i>
+          </button>
+        </div>
+        
+        <div class="p-6 bg-white relative z-30">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xl font-semibold text-gray-800">Advance of Cyber 2022</h3>
+            <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">SkillUP</span>
+          </div>
+          <p class="text-gray-600">TryHackMe</p>
+          <div class="mt-4 flex justify-between items-center">
+            <span class="text-xs text-gray-500">Issued</span>
+            <div class="flex space-x-2">
+              <span class="w-3 h-3 rounded-full bg-primary animate-pulse"></span>
+              <span class="w-3 h-3 rounded-full bg-secondary animate-pulse delay-100"></span>
+              <span class="w-3 h-3 rounded-full bg-accent animate-pulse delay-200"></span>
+            </div>
+          </div>
+        </div>
+      </div> <!-- Certificate 15 -->
+      <div class="certificate-card group relative overflow-hidden rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 z-10"></div>
+        <img src="./img/cer-5.jpeg" alt="Introduction to Prompt Engineering" class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105" />
+        
+        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 z-20">
+          <button class="view-certificate bg-white text-primary px-6 py-3 rounded-full font-medium hover:bg-lavender transition-all transform hover:scale-105 shadow-lg" data-certificate="certificate5">
+            View Certificate <i class="ri-arrow-right-line ml-2"></i>
+          </button>
+        </div>
+        
+        <div class="p-6 bg-white relative z-30">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xl font-semibold text-gray-800">Advance of Cyber 2023</h3>
+            <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">SkillUP</span>
+          </div>
+          <p class="text-gray-600">TryHackMe</p>
+          <div class="mt-4 flex justify-between items-center">
+            <span class="text-xs text-gray-500">Issued</span>
+            <div class="flex space-x-2">
+              <span class="w-3 h-3 rounded-full bg-primary animate-pulse"></span>
+              <span class="w-3 h-3 rounded-full bg-secondary animate-pulse delay-100"></span>
+              <span class="w-3 h-3 rounded-full bg-accent animate-pulse delay-200"></span>
+            </div>
+          </div>
+        </div>
+      </div> <!-- Certificate 15 -->
+      <div class="certificate-card group relative overflow-hidden rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 z-10"></div>
+        <img src="./img/cer-5.jpeg" alt="Introduction to Prompt Engineering" class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105" />
+        
+        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 z-20">
+          <button class="view-certificate bg-white text-primary px-6 py-3 rounded-full font-medium hover:bg-lavender transition-all transform hover:scale-105 shadow-lg" data-certificate="certificate5">
+            View Certificate <i class="ri-arrow-right-line ml-2"></i>
+          </button>
+        </div>
+        
+        <div class="p-6 bg-white relative z-30">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xl font-semibold text-gray-800">Advance of Cyber 2024</h3>
+            <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">SkillUP</span>
+          </div>
+          <p class="text-gray-600">TryHackMe</p>
+          <div class="mt-4 flex justify-between items-center">
+            <span class="text-xs text-gray-500">Issued</span>
+            <div class="flex space-x-2">
+              <span class="w-3 h-3 rounded-full bg-primary animate-pulse"></span>
+              <span class="w-3 h-3 rounded-full bg-secondary animate-pulse delay-100"></span>
+              <span class="w-3 h-3 rounded-full bg-accent animate-pulse delay-200"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Certificate 2 -->
+      <div class="certificate-card group relative overflow-hidden rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 z-10"></div>
+        <img src="./img/cer-2.png" alt="ChatGPT for SEO" class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105" />
+        
+        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 z-20">
+          <button class="view-certificate bg-white text-primary px-6 py-3 rounded-full font-medium hover:bg-lavender transition-all transform hover:scale-105 shadow-lg" data-certificate="certificate2">
+            View Certificate <i class="ri-arrow-right-line ml-2"></i>
+          </button>
+        </div>
+        
+        <div class="p-6 bg-white relative z-30">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xl font-semibold text-gray-800">ChatGPT for SEO</h3>
+            <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">SkillUP</span>
+          </div>
+          <p class="text-gray-600">SimpliLearn</p>
+          <div class="mt-4 flex justify-between items-center">
+            <span class="text-xs text-gray-500">Issued</span>
+            <div class="flex space-x-2">
+              <span class="w-3 h-3 rounded-full bg-primary animate-pulse"></span>
+              <span class="w-3 h-3 rounded-full bg-secondary animate-pulse delay-100"></span>
+              <span class="w-3 h-3 rounded-full bg-accent animate-pulse delay-200"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Certificate 2 -->
+      <div class="certificate-card group relative overflow-hidden rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 z-10"></div>
+        <img src="./img/cer-2.png" alt="ChatGPT for SEO" class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105" />
+        
+        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 z-20">
+          <button class="view-certificate bg-white text-primary px-6 py-3 rounded-full font-medium hover:bg-lavender transition-all transform hover:scale-105 shadow-lg" data-certificate="certificate2">
+            View Certificate <i class="ri-arrow-right-line ml-2"></i>
+          </button>
+        </div>
+        
+        <div class="p-6 bg-white relative z-30">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xl font-semibold text-gray-800">Unreal Engine Developer Course</h3>
+            <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">SkillUP</span>
+          </div>
+          <p class="text-gray-600">Unreal Engine</p>
+          <div class="mt-4 flex justify-between items-center">
+            <span class="text-xs text-gray-500">Issued</span>
+            <div class="flex space-x-2">
+              <span class="w-3 h-3 rounded-full bg-primary animate-pulse"></span>
+              <span class="w-3 h-3 rounded-full bg-secondary animate-pulse delay-100"></span>
+              <span class="w-3 h-3 rounded-full bg-accent animate-pulse delay-200"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certificate 3 -->
+      <div class="certificate-card group relative overflow-hidden rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 z-10"></div>
+        <img src="./img/cer-3.jpeg" alt="Graphic Design : 3D Effect" class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105" />
+        
+        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 z-20">
+          <button class="view-certificate bg-white text-primary px-6 py-3 rounded-full font-medium hover:bg-lavender transition-all transform hover:scale-105 shadow-lg" data-certificate="certificate3">
+            View Certificate <i class="ri-arrow-right-line ml-2"></i>
+          </button>
+        </div>
+        
+        <div class="p-6 bg-white relative z-30">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xl font-semibold text-gray-800">Graphic Design : 3D Effect</h3>
+            <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">Project</span>
+          </div>
+          <p class="text-gray-600">Coursera</p>
+          <div class="mt-4 flex justify-between items-center">
+            <span class="text-xs text-gray-500">Issued</span>
+            <div class="flex space-x-2">
+              <span class="w-3 h-3 rounded-full bg-primary animate-pulse"></span>
+              <span class="w-3 h-3 rounded-full bg-secondary animate-pulse delay-100"></span>
+              <span class="w-3 h-3 rounded-full bg-accent animate-pulse delay-200"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certificate 4 -->
+      <div class="certificate-card group relative overflow-hidden rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 z-10"></div>
+        <img src="./img/cer-4.jpeg" alt="ChatGPT for Python" class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105" />
+        
+        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 z-20">
+          <button class="view-certificate bg-white text-primary px-6 py-3 rounded-full font-medium hover:bg-lavender transition-all transform hover:scale-105 shadow-lg" data-certificate="certificate4">
+            View Certificate <i class="ri-arrow-right-line ml-2"></i>
+          </button>
+        </div>
+        
+        <div class="p-6 bg-white relative z-30">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xl font-semibold text-gray-800">ChatGPT for Python</h3>
+            <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">SkillUP</span>
+          </div>
+          <p class="text-gray-600">SimpliLearn</p>
+          <div class="mt-4 flex justify-between items-center">
+            <span class="text-xs text-gray-500">Issued</span>
+            <div class="flex space-x-2">
+              <span class="w-3 h-3 rounded-full bg-primary animate-pulse"></span>
+              <span class="w-3 h-3 rounded-full bg-secondary animate-pulse delay-100"></span>
+              <span class="w-3 h-3 rounded-full bg-accent animate-pulse delay-200"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certificate 5 -->
+      <div class="certificate-card group relative overflow-hidden rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 z-10"></div>
+        <img src="./img/cer-5.jpeg" alt="Introduction to Prompt Engineering" class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105" />
+        
+        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 z-20">
+          <button class="view-certificate bg-white text-primary px-6 py-3 rounded-full font-medium hover:bg-lavender transition-all transform hover:scale-105 shadow-lg" data-certificate="certificate5">
+            View Certificate <i class="ri-arrow-right-line ml-2"></i>
+          </button>
+        </div>
+        
+        <div class="p-6 bg-white relative z-30">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xl font-semibold text-gray-800">Introduction to Prompt Engineering</h3>
+            <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">SkillUP</span>
+          </div>
+          <p class="text-gray-600">SimpliLearn</p>
+          <div class="mt-4 flex justify-between items-center">
+            <span class="text-xs text-gray-500">Issued</span>
+            <div class="flex space-x-2">
+              <span class="w-3 h-3 rounded-full bg-primary animate-pulse"></span>
+              <span class="w-3 h-3 rounded-full bg-secondary animate-pulse delay-100"></span>
+              <span class="w-3 h-3 rounded-full bg-accent animate-pulse delay-200"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certificate 6 -->
+      <div class="certificate-card group relative overflow-hidden rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 z-10"></div>
+        <img src="./img/cer-6.png" alt="AWS S3" class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105" />
+        
+        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 z-20">
+          <button class="view-certificate bg-white text-primary px-6 py-3 rounded-full font-medium hover:bg-lavender transition-all transform hover:scale-105 shadow-lg" data-certificate="certificate6">
+            View Certificate <i class="ri-arrow-right-line ml-2"></i>
+          </button>
+        </div>
+        
+        <div class="p-6 bg-white relative z-30">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xl font-semibold text-gray-800">AWS S3</h3>
+            <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">Project</span>
+          </div>
+          <p class="text-gray-600">Coursera</p>
+          <div class="mt-4 flex justify-between items-center">
+            <span class="text-xs text-gray-500">Issued</span>
+            <div class="flex space-x-2">
+              <span class="w-3 h-3 rounded-full bg-primary animate-pulse"></span>
+              <span class="w-3 h-3 rounded-full bg-secondary animate-pulse delay-100"></span>
+              <span class="w-3 h-3 rounded-full bg-accent animate-pulse delay-200"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+     
+
+      <!-- Certificate 9 -->
+      <div class="certificate-card group relative overflow-hidden rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 z-10"></div>
+        <img src="./img/cer-9.png" alt="Introduction to Cyber Security" class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105" />
+        
+        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 z-20">
+          <button class="view-certificate bg-white text-primary px-6 py-3 rounded-full font-medium hover:bg-lavender transition-all transform hover:scale-105 shadow-lg" data-certificate="certificate9">
+            View Certificate <i class="ri-arrow-right-line ml-2"></i>
+          </button>
+        </div>
+        
+        <div class="p-6 bg-white relative z-30">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xl font-semibold text-gray-800">Introduction to Cyber Security</h3>
+            <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">SkillUP</span>
+          </div>
+          <p class="text-gray-600">SimpliLearn</p>
+          <div class="mt-4 flex justify-between items-center">
+            <span class="text-xs text-gray-500">Issued</span>
+            <div class="flex space-x-2">
+              <span class="w-3 h-3 rounded-full bg-primary animate-pulse"></span>
+              <span class="w-3 h-3 rounded-full bg-secondary animate-pulse delay-100"></span>
+              <span class="w-3 h-3 rounded-full bg-accent animate-pulse delay-200"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certificate 10 -->
+      <div class="certificate-card group relative overflow-hidden rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 z-10"></div>
+        <img src="./img/cer-10.png" alt="Introduction to Prompt Engineering with GitHub Copilot" class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105" />
+        
+        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 z-20">
+          <button class="view-certificate bg-white text-primary px-6 py-3 rounded-full font-medium hover:bg-lavender transition-all transform hover:scale-105 shadow-lg" data-certificate="certificate10">
+            View Certificate <i class="ri-arrow-right-line ml-2"></i>
+          </button>
+        </div>
+        
+        <div class="p-6 bg-white relative z-30">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xl font-semibold text-gray-800">GitHub Copilot</h3>
+            <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">SkillUP</span>
+          </div>
+          <p class="text-gray-600">SimpliLearn</p>
+          <div class="mt-4 flex justify-between items-center">
+            <span class="text-xs text-gray-500">Issued</span>
+            <div class="flex space-x-2">
+              <span class="w-3 h-3 rounded-full bg-primary animate-pulse"></span>
+              <span class="w-3 h-3 rounded-full bg-secondary animate-pulse delay-100"></span>
+              <span class="w-3 h-3 rounded-full bg-accent animate-pulse delay-200"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modern Certificate Modal -->
+<div id="certificateModal" class="modal fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-sm">
+  <div class="modal-content relative max-w-4xl w-full mx-4">
+    <button class="close-modal absolute -top-12 right-0 text-white hover:text-lavender transition-colors z-10">
+      <i class="ri-close-circle-fill text-4xl"></i>
+    </button>
+    
+    <div class="relative overflow-hidden rounded-xl shadow-2xl">
+      <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 z-10"></div>
+      <img id="certificateImage" src="" alt="Certificate" class="w-full h-auto max-h-[80vh] object-contain relative z-0">
+      
+      <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 z-20">
+        <div class="flex justify-between items-center">
+          <div>
+            <h3 id="certificateTitle" class="text-xl font-bold text-white"></h3>
+            <p id="certificateIssuer" class="text-gray-300"></p>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Certificate Modal -->
+<div id="certificateModal" class="modal hidden">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <img id="certificateImage" src="" alt="Certificate" class="w-full h-auto">
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="text-white py-12" style="background: linear-gradient(to right, #eb9d4a, #7c4dff)";>
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Social Media (All Icons) -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">Follow Me</h3>
+        <div class="grid grid-cols-4 gap-3">
+            <!-- Facebook -->
+          <a href="https://www.facebook.com/prabeen.923860" target="_blank" class="p-2 bg-blue-600 hover:bg-blue-700 rounded-full flex justify-center items-center transition-colors w-10 h-10">
+            <i class="ri-facebook-line"></i>
+          </a>
+          <!-- LinkedIn -->
+           <a href="https://www.linkedin.com/in/prabeen-%E2%96%B7-ab2859333/" target="_blank" class="p-2 bg-blue-800 hover:bg-blue-900 rounded-full flex justify-center items-center transition-colors w-10 h-10">
+            <i class="ri-linkedin-line"></i>
+          </a>
+          <!-- Telegram -->
+          <a href="9813349397" target="_blank" class="p-2 bg-sky-500 hover:bg-sky-600 rounded-full flex justify-center items-center transition-colors w-10 h-10">
+            <i class="ri-telegram-line"></i>
+          </a> 
+          <!-- X -->
+           <a href="https://x.com/_Prabeen" target="_blank" class="p-2 bg-black hover:bg-gray-800 rounded-full flex justify-center items-center transition-colors w-10 h-10">
+  <i class="ri-twitter-x-line"></i>
+</a>
+        </div>
+      
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+        <ul class="space-y-2">
+          <li><a href="index.html" class="hover:text-indigo-300 transition-colors">Home</a></li>
+          <li><a href="about.html" class="hover:text-indigo-300 transition-colors">About</a></li>
+          <li><a href="projects.html" class="hover:text-indigo-300 transition-colors">Projects</a></li>
+          <li><a href="contact.html" class="hover:text-indigo-300 transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h3 class="text-xl font-bold mb-4 text-white">Get in Touch</h3>
+        <ul class="space-y-3">
+          <li class="flex items-center">
+            <i class="ri-mail-line mr-2 text-indigo-300"></i>
+            <a href="mailto:iglhoraa@gmail.com" class="text-white no-underline hover:no-underline">
+              iglhoraa@gmail.com
+            </a>
+          </li>
+          <li class="flex items-center">
+            <i class="ri-phone-line mr-2 text-indigo-300"></i>
+            <a href="tel:+9779813349397" class="text-white no-underline hover:no-underline">
+              +977 9813349397
+            </a>
+          </li>
+          <li class="flex items-center">
+            <i class="ri-map-pin-line mr-2 text-indigo-300"></i>
+            <a href="https://maps.app.goo.gl/wJ5MpP4ufX52VdAs5" target="_blank" class="text-white no-underline hover:no-underline">
+              Bhaktapur-44800, Bagmati, Nepal
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+    </div>
+
+    <!-- Copyright -->
+    <div class="mt-12 pt-6 border-t border-indigo-800 text-center">
+      <footer>
+  © 2023–2025 Prabeen. All rights reserved. 
+  <a href="/terms">Terms</a> • <a href="/privacy">Privacy</a> • <a href="/licenses">Licenses</a>
+</footer>
+    </div>
+  </div>
+</footer>
+<script>
+    // Mobile menu functionality
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const closeMenuButton = document.getElementById('close-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const overlay = document.getElementById('overlay');
+    const menuIcon = document.getElementById('menu-icon');
+    
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.remove('translate-x-full');
+      mobileMenu.classList.add('translate-x-0');
+      overlay.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    });
+    
+    closeMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.remove('translate-x-0');
+      mobileMenu.classList.add('translate-x-full');
+      overlay.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    });
+    
+    overlay.addEventListener('click', () => {
+      mobileMenu.classList.remove('translate-x-0');
+      mobileMenu.classList.add('translate-x-full');
+      overlay.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    });
+    
+    // Close menu when a nav link is clicked
+    document.querySelectorAll('#mobile-menu .nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('translate-x-0');
+        mobileMenu.classList.add('translate-x-full');
+        overlay.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      });
+    });
+    
+    // Exploit button click handler (both desktop and mobile)
+    const ExploitButton = document.getElementById('ExploitButton');
+    const mobileExploitButton = document.getElementById('mobile-ExploitButton');
+    
+    function handleExploit() {
+      // Add your Exploit logic here
+      console.log('Exploit clicked');
+    }
+    
+    if (ExploitButton) ExploitButton.addEventListener('click', handleExploit);
+    if (mobileExploitButton) mobileExploitButton.addEventListener('click', handleExploit);
+
+    // Certificate Modal functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const modal = document.getElementById('certificateModal');
+      const certificateImage = document.getElementById('certificateImage');
+      const closeModal = document.querySelector('.close-modal');
+      const viewButtons = document.querySelectorAll('.view-certificate');
+      
+      const certificateImages = {
+       
+          certificate1: "./img/cer-1.png",
+          certificate2: "./img/cer-2.png",
+          certificate3: "./img/cer-3.jpeg",
+          certificate4: "./img/cer-4.jpeg",
+          certificate5: "./img/cer-5.jpeg",
+          certificate6: "./img/cer-6.png",
+          certificate7: "./img/oscar-certificate.jpg",
+          certificate8: "./img/oscar-certificate1.jpg",
+          certificate9: "./img/cer-9.png",
+          certificate10: "./img/cer-10.png"
+
+      };
+      
+      viewButtons.forEach(button => {
+          button.addEventListener('click', function() {
+              const certificateId = this.getAttribute('data-certificate');
+              certificateImage.src = certificateImages[certificateId];
+              modal.classList.remove('hidden');
+              modal.style.display = 'flex';
+              document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+          });
+      });
+      
+      closeModal.addEventListener('click', function() {
+          modal.classList.add('hidden');
+          modal.style.display = 'none';
+          document.body.style.overflow = 'auto'; // Re-enable scrolling
+      });
+      
+      window.addEventListener('click', function(event) {
+          if (event.target === modal) {
+              modal.classList.add('hidden');
+              modal.style.display = 'none';
+              document.body.style.overflow = 'auto'; // Re-enable scrolling
+          }
+      });
+    });
+  </script>
+</body>
+</html>

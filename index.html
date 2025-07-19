@@ -1,0 +1,889 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prabeen</title>
+<!-- Basic Meta Tags -->
+
+
+<meta name="title" content="Prabeen - Portfolio">
+<meta name="description" content="Hi, I'm Prabeen – Software Developer | Designer | Brand Builder. Explore my projects and creative works.">
+<meta name="keywords" content="Prabeen, Portfolio, Developer, Designer, Brand Builder, GitHub Pages, Web Developer, Vasanth Rizz">
+<meta name="author" content="Prabeen">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vasanth-rizz-5.github.io/vasanthrizz/">
+<meta property="og:title" content="Prabeen - Portfolio">
+<meta property="og:description" content="Hi, I'm Prabeen – Software Developer | Designer | Brand Builder. Explore my projects and creative works.">
+<meta property="og:image" content="https://vasanth-rizz-5.github.io/vasanthrizz/img/image.png">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://vasanth-rizz-5.github.io/vasanthrizz/">
+<meta name="twitter:title" content="Prabeen - Portfolio">
+<meta name="twitter:description" content="Hi, I'm Prabeen – Software Developer | Designer | Brand Builder. Explore my projects and creative works.">
+<meta name="twitter:image" content="https://vasanth-rizz-5.github.io/vasanthrizz/img/image.png">
+
+<link rel="icon" type="image/png" href="./img/logo.jpeg">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#1a237e',secondary:'#2196f3',accent:'#7c4dff',lavender:'#e6e6fa'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+     <!-- Alpine.js CDN -->
+     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Poppins', sans-serif;
+scroll-behavior: smooth;
+}
+.preloader {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: #0f172a;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+z-index: 9999;
+transition: opacity 0.5s ease-out;
+}
+.preloader-text {
+font-family: 'Pacifico', serif;
+font-size: 3rem;
+color: white;
+margin-bottom: 2rem;
+background: linear-gradient(to right, #2196f3, #7c4dff);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+.progress-container {
+width: 300px;
+height: 8px;
+background: rgba(255, 255, 255, 0.1);
+border-radius: 4px;
+overflow: hidden;
+margin-bottom: 1rem;
+}
+.progress-bar {
+height: 100%;
+width: 0%;
+background: linear-gradient(to right, #2196f3, #7c4dff);
+transition: width 0.5s ease;
+}
+.progress-text {
+color: white;
+font-size: 1rem;
+}
+.nav-link {
+position: relative;
+}
+.nav-link::after {
+content: '';
+position: absolute;
+width: 0;
+height: 2px;
+bottom: -4px;
+left: 0;
+background: #e6e6fa;
+transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+width: 100%;
+}
+.active-link::after {
+width: 100%;
+}
+.skill-card {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.skill-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 25px rgba(124, 77, 255, 0.2);
+}
+.project-card {
+overflow: hidden;
+position: relative;
+}
+.project-card {
+position: relative;
+}
+.project-card img {
+transition: opacity 0.3s ease;
+}
+.project-card:hover img {
+opacity: 0.1;
+}
+.project-overlay {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 64%;
+display: flex;
+justify-content: center;
+align-items: center;
+opacity: 0;
+transition: opacity 0.3s ease;
+}
+.project-card:hover .project-overlay {
+opacity: 1;
+}
+.certificate-card {
+overflow: hidden;
+position: relative;
+}
+.certificate-overlay {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(26, 35, 126, 0.9);
+display: flex;
+justify-content: center;
+align-items: center;
+opacity: 0;
+transition: opacity 0.3s ease;
+}
+.certificate-card:hover .certificate-overlay {
+opacity: 1;
+}
+.modal {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.8);
+z-index: 1000;
+justify-content: center;
+align-items: center;
+}
+.modal-content {
+position: relative;
+max-width: 90%;
+max-height: 90%;
+}
+.close-modal {
+position: absolute;
+top: -40px;
+right: 0;
+color: white;
+font-size: 30px;
+cursor: pointer;
+}
+.service-card {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 25px rgba(124, 77, 255, 0.2);
+}
+.social-icon {
+transition: transform 0.3s ease, color 0.3s ease;
+}
+.social-icon:hover {
+transform: translateY(-3px);
+}
+
+
+
+/* For very small devices */
+@media (max-width: 480px) {
+    .profile-image {
+        width: 400px!important;
+    }
+}
+
+
+.profile-image {
+    width: 60% !important;
+   position: relative;
+transition: transform 0.3s ease;
+}
+.profile-image:hover {
+transform: scale(1.03);
+}
+.experience-badge {
+position: absolute;
+bottom: 20px;
+right: 20px;
+background: linear-gradient(to right, #2196f3, #7c4dff);
+color: white;
+padding: 8px 16px;
+border-radius: 20px;
+font-weight: 600;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+animation: badgeMove 2s ease-in-out infinite;
+}
+@keyframes badgeMove {
+0% {
+transform: translateX(0);
+}
+50% {
+transform: translateX(-20px);
+}
+100% {
+transform: translateX(0);
+}
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+.custom-checkbox {
+appearance: none;
+-webkit-appearance: none;
+width: 20px;
+height: 20px;
+border: 2px solid #2196f3;
+border-radius: 4px;
+outline: none;
+cursor: pointer;
+position: relative;
+}
+.custom-checkbox:checked {
+background-color: #2196f3;
+}
+.custom-checkbox:checked::after {
+content: '';
+position: absolute;
+top: 3px;
+left: 6px;
+width: 6px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+.custom-switch {
+position: relative;
+display: inline-block;
+width: 50px;
+height: 24px;
+}
+.custom-switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.switch-slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #ccc;
+transition: .4s;
+border-radius: 34px;
+}
+.switch-slider:before {
+position: absolute;
+content: "";
+height: 16px;
+width: 16px;
+left: 4px;
+bottom: 4px;
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+input:checked + .switch-slider {
+background-color: #2196f3;
+}
+input:checked + .switch-slider:before {
+transform: translateX(26px);
+
+}
+
+/* Video Background Styles */
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.video-background video {
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+ 
+}
+
+.home-content {
+  position: relative;
+  z-index: 1;
+}
+</style>
+</head>
+<body class="bg-white">
+
+  <div class="video-background">
+    <video autoplay muted loop id="bg-video">
+        <source src="./img/effect.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    <div class="video-overlay"></div>
+</div>
+
+    <!-- IGL_HORAA Preloader -->
+<div class="preloader">
+    <div class="preloader-text">wel-come to Prabeen ko Portfolio</div>
+    <div class="progress-container">
+    <div class="progress-bar"></div>
+    </div>
+    <div class="progress-text">0%</div>
+    </div> 
+
+     
+<!-- Navigation Bar -->
+<nav class="fixed top-0 left-0 w-full z-50 shadow-md" style="background: linear-gradient(to right, #000000fd, #7c4dff)";>
+    <div class="container mx-auto px-6 py-3 flex items-center justify-between">
+      <a href="#" class="text-white font-['Pacifico'] text-2xl">Prabeen</a>
+      
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="index.html" class="nav-link text-white hover:text-lavender transition-colors  active-link">Home</a>
+        <a href="about.html" class="nav-link text-white hover:text-lavender transition-colors ">About</a>
+        <a href="resume.html" class="nav-link text-white hover:text-lavender transition-colors">Resume</a>
+        <a href="skills.html" class="nav-link text-white hover:text-lavender transition-colors">Skills</a>
+        <a href="projects.html" class="nav-link text-white hover:text-lavender transition-colors ">Projects</a>
+        <a href="certificates.html" class="nav-link text-white hover:text-lavender transition-colors ">Certificates</a>
+        <a href="contact.html" class="nav-link text-white hover:text-lavender transition-colors ">Contact</a>
+      </div>
+      
+      <div class="flex items-center gap-4">
+        <button id="ExploitButton" class="hidden md:block bg-white text-primary px-6 py-2 !rounded-button font-medium hover:bg-lavender transition-colors whitespace-nowrap"><a href="sign-in.html" target="_blank">Exploit</a></button>
+        
+        <!-- Mobile Toggle Button -->
+        <button id="mobile-menu-button" class="md:hidden w-8 h-8 flex items-center justify-center text-white cursor-pointer">
+          <i class="ri-menu-line ri-lg" id="menu-icon"></i>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu (Hidden by default) -->
+    <div id="mobile-menu" class="md:hidden fixed top-0 right-0 h-full w-64 bg-gradient-to-b from-primary to-accent shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-50">
+      <div class="flex justify-end p-4">
+        <button id="close-menu-button" class="w-8 h-8 flex items-center justify-center text-white cursor-pointer">
+          <i class="ri-close-line ri-lg"></i>
+        </button>
+      </div>
+      <div class="flex flex-col space-y-6 px-6 py-4">
+        <a href="index.html" class="nav-link text-white hover:text-lavender transition-colors active-link">Home</a>
+        <a href="about.html" class="nav-link text-white hover:text-lavender transition-colors">About</a>
+        <a href="resume.html" class="nav-link text-white hover:text-lavender transition-colors ">Resume</a>
+        <a href="skills.html" class="nav-link text-white hover:text-lavender transition-colors ">Skills</a>
+        <a href="projects.html" class="nav-link text-white hover:text-lavender transition-colors ">Projects</a>
+        <a href="certificates.html" class="nav-link text-white hover:text-lavender transition-colors">Certificates</a>
+        <a href="contact.html" class="nav-link text-white hover:text-lavender transition-colors ">Contact</a>
+        <button id="mobile-ExploitButton" class="bg-white text-primary px-6 py-2 rounded-button font-medium hover:bg-lavender transition-colors whitespace-nowrap w-full"><a href="sign-in.html" target="_blank">Exploit</a></button>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Overlay (Hidden by default) -->
+  <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
+
+
+
+<!-- Home Section -->
+<section id="home" class="pt-24 min-h-screen flex items-center"  >
+    <div class="container mx-auto px-6">
+    <div class="flex flex-col md:flex-row items-center">
+    <div class="w-full md:w-1/2 mb-10 md:mb-0">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-800">Greetings! I’m <span class="text-primary">Prabeen</span></h1>
+    <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-gray-700" id="rotating-title"></h2>
+
+  <style>
+/* Glitch effect */
+@keyframes glitchTop {
+  0%, 100% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+  }
+  20% {
+    clip-path: inset(2px 0 4px 0);
+    transform: translate(-2px, -2px);
+  }
+  40% {
+    clip-path: inset(4px 0 2px 0);
+    transform: translate(2px, 2px);
+  }
+  60% {
+    clip-path: inset(2px 0 4px 0);
+    transform: translate(-2px, 2px);
+  }
+  80% {
+    clip-path: inset(4px 0 2px 0);
+    transform: translate(2px, -2px);
+  }
+}
+
+@keyframes glitchBottom {
+  0%, 100% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+  }
+  20% {
+    clip-path: inset(4px 0 2px 0);
+    transform: translate(2px, 2px);
+  }
+  40% {
+    clip-path: inset(2px 0 4px 0);
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    clip-path: inset(4px 0 2px 0);
+    transform: translate(2px, -2px);
+  }
+  80% {
+    clip-path: inset(2px 0 4px 0);
+    transform: translate(-2px, 2px);
+  }
+}
+
+.glitch {
+  position: relative;
+  color: #00ff00; /* hacker green */
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  right: 0;
+  opacity: 0.8;
+  clip-path: inset(0);
+  pointer-events: none;
+}
+
+.glitch::before {
+  animation: glitchTop 2s infinite linear alternate-reverse;
+  color: #0f0;
+  z-index: -1;
+  text-shadow: -2px 0 red;
+  top: 0;
+}
+
+.glitch::after {
+  animation: glitchBottom 1.5s infinite linear alternate-reverse;
+  color: #0ff;
+  z-index: -2;
+  text-shadow: 2px 0 blue;
+  top: 0;
+}
+</style>
+
+<h2
+  class="text-2xl md:text-3xl font-semibold mb-6 text-gray-700 glitch"
+  id="rotating-title"
+  data-text=""
+></h2>
+
+<script>
+  const titles = [
+    "CYBERMIND",
+    "GAMEGRIND",
+    "EDITREFINED"
+  ];
+
+  const titleElement = document.getElementById('rotating-title');
+  let currentIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  let typingSpeed = 100;
+
+  function typeTitle() {
+    const currentTitle = titles[currentIndex];
+
+    if (isDeleting) {
+      charIndex--;
+      titleElement.textContent = currentTitle.substring(0, charIndex);
+    } else {
+      charIndex++;
+      titleElement.textContent = currentTitle.substring(0, charIndex);
+    }
+
+    titleElement.setAttribute('data-text', titleElement.textContent);
+
+    if (!isDeleting && charIndex === currentTitle.length) {
+      isDeleting = true;
+      typingSpeed = 1000; // Pause 1 sec at full text
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      currentIndex = (currentIndex + 1) % titles.length;
+      typingSpeed = 200; // Pause before typing next
+    } else {
+      typingSpeed = isDeleting ? 50 : 100;
+    }
+
+    if (charIndex > 0) {
+      titleElement.classList.add('glitch');
+    } else {
+      titleElement.classList.remove('glitch');
+    }
+
+    setTimeout(typeTitle, typingSpeed);
+  }
+
+  setTimeout(typeTitle, 1000);
+</script>
+<style>
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  .blink {
+    animation: blink 1.5s infinite;
+    font-weight: bold;
+    background: linear-gradient(90deg, #ff6a00, #ee0979);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .light-text {
+    color: #a0aec0; /* light gray-blue */
+  }
+</style>
+<p class="text-gray-600 mb-6">
+  A passionate <strong>Cybersecurity Enthusiast</strong> and aspiring <strong>Ethical Hacker</strong> with hands-on skills in <strong>vulnerability assessment, penetration testing, and exploit research</strong>. Dedicated to securing digital environments and staying ahead in the world of cyber threats.
+</p>
+<p class="text-gray-600 mb-6">
+  Also experienced in <strong>Video Graphics Design, 3D Modeling</strong>, and <strong>Game Asset Creation</strong>, bringing creativity to life through tools like Blender, Adobe After Effects, and Unity.
+</p>
+<p class="text-gray-600 mb-6">
+  <span class="blink font-semibold text-xl text-indigo-600">CYBERMIND</span> <span class="light-text">sharpens security through ethical hacking and protecting digital systems.</span><br>
+  <span class="blink font-semibold text-xl text-rose-600">GAMEGRIND</span> <span class="light-text">fuels competitive esports passion with strategic gameplay and dedication.</span><br>
+  <span class="blink font-semibold text-xl text-emerald-600">EDITREFINED</span> <span class="light-text">delivers polished, engaging video content with creative precision.</span>
+</p>
+<p class="text-gray-600 mb-6">
+  An active member of the <strong>Esports and Gaming Community</strong>, I specialize in gaming content, strategy development, and digital storytelling—fusing tech, design, and gameplay for immersive experiences.
+</p>
+
+    <div class="flex space-x-4">
+<!-- Hire Me Button -->
+<div x-data="{ showPopup: false }" class="inline-block">
+    <button @click="showPopup = true"
+        class="bg-gradient-to-r from-primary to-accent text-white px-8 py-3 !rounded-button font-medium hover:shadow-lg transform hover:-translate-y-1 transition-all whitespace-nowrap h-[50px] flex items-center justify-center">
+        Hire Me
+    </button>
+
+    <!-- Modal Popup -->
+    <div x-show="showPopup"
+         x-transition
+         class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60"
+         x-cloak
+         @click.self="showPopup = false">
+
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-sm p-6 space-y-4 text-center">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">Let's Connect</h2>
+
+            <a href="9813349397"
+        target="_blank"
+        class="block w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition">
+         💬 Telegram Chat
+     </a>
+
+     <a href="mailto:iglhoraa@gmail"
+        class="block w-full bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition">
+         📧 Send Email
+     </a>
+
+            <button @click="showPopup = false"
+                    class="mt-4 text-sm text-gray-500 hover:underline">
+                ❌ Close
+            </button>
+        </div>
+    </div>
+</div>
+
+      <a href="contact.html" target="_blank" class="inline-flex">
+          <button class="border-2 border-primary text-primary px-8 py-3 !rounded-button font-medium hover:bg-primary hover:text-white transition-colors whitespace-nowrap h-[50px] flex items-center justify-center">
+              Contact
+          </button>
+      </a>
+  </div>
+    </div>
+    <div class="w-full md:w-1/2 flex justify-center">
+    <div class="profile-image relative">
+    <img src="./img/me.jpg" alt="Prabeen" class="rounded-xl shadow-xl object-cover object-top" />
+    <div class="experience-badge">
+   TryHackMe #1NP
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+    <div class="flex justify-center" style="padding-bottom: 80px !important; padding-top: 60px !important;">
+      <a href="about.html" class="relative">
+        <button class="bg-gradient-to-r from-primary to-accent text-white px-8 py-3 rounded-button font-medium hover:shadow-lg transform hover:-translate-y-1 transition-all whitespace-nowrap relative pr-10">
+          About Me
+          <!-- Arrow image placed inside button -->
+          <img src="./img/arrow.png" 
+          alt="Arrow" 
+          class="d-block d-lg-none"
+          style="position: absolute; width: 38px; height: 46px; bottom: -36px; right: -12px; pointer-events: none;">
+     
+   </button>
+        </button>
+      </a>
+    </div>
+     
+      
+
+
+<!-- Footer -->
+
+<footer class="text-white py-12" style="background: linear-gradient(to right, #000000fd, #7c4dff)";>
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Social Media (All Icons) -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">Follow Me</h3>
+        <div class="grid grid-cols-4 gap-3">
+            <!-- Facebook -->
+          <a href="https://www.facebook.com/prabeen.923860" target="_blank" class="p-2 bg-blue-600 hover:bg-blue-700 rounded-full flex justify-center items-center transition-colors w-10 h-10">
+            <i class="ri-facebook-line"></i>
+          </a>
+          <!-- LinkedIn -->
+           <a href="https://www.linkedin.com/in/prabeen-%E2%96%B7-ab2859333/" target="_blank" class="p-2 bg-blue-800 hover:bg-blue-900 rounded-full flex justify-center items-center transition-colors w-10 h-10">
+            <i class="ri-linkedin-line"></i>
+          </a>
+          <!-- Telegram -->
+          <a href="9813349397" target="_blank" class="p-2 bg-sky-500 hover:bg-sky-600 rounded-full flex justify-center items-center transition-colors w-10 h-10">
+            <i class="ri-telegram-line"></i>
+          </a> 
+          <!-- X -->
+           <a href="https://x.com/_Prabeen" target="_blank" class="p-2 bg-black hover:bg-gray-800 rounded-full flex justify-center items-center transition-colors w-10 h-10">
+  <i class="ri-twitter-x-line"></i>
+</a>
+        </div>
+      
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+        <ul class="space-y-2">
+          <li><a href="index.html" class="hover:text-indigo-300 transition-colors">Home</a></li>
+          <li><a href="about.html" class="hover:text-indigo-300 transition-colors">About</a></li>
+          <li><a href="projects.html" class="hover:text-indigo-300 transition-colors">Projects</a></li>
+          <li><a href="contact.html" class="hover:text-indigo-300 transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h3 class="text-xl font-bold mb-4 text-white">Get in Touch</h3>
+        <ul class="space-y-3">
+          <li class="flex items-center">
+            <i class="ri-mail-line mr-2 text-indigo-300"></i>
+            <a href="mailto:iglhoraa@gmail.com" class="text-white no-underline hover:no-underline">
+              iglhoraa@gmail.com
+            </a>
+          </li>
+          <li class="flex items-center">
+            <i class="ri-phone-line mr-2 text-indigo-300"></i>
+            <a href="tel:+919025440346" class="text-white no-underline hover:no-underline">
+              +977 9813349397
+            </a>
+          </li>
+          <li class="flex items-center">
+            <i class="ri-map-pin-line mr-2 text-indigo-300"></i>
+            <a href="https://maps.app.goo.gl/wJ5MpP4ufX52VdAs5" target="_blank" class="text-white no-underline hover:no-underline">
+              Bhaktapur-44800, Bagmati, Nepal
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+    </div>
+
+    <!-- Copyright -->
+    <div class="mt-12 pt-6 border-t border-indigo-800 text-center">
+      <footer>
+  © 2023–2025 Prabeen. All rights reserved. 
+  <a href="/terms">Terms</a> • <a href="/privacy">Privacy</a> • <a href="/licenses">Licenses</a>
+</footer>
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+
+
+<script>
+    // Mobile menu functionality
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const closeMenuButton = document.getElementById('close-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const overlay = document.getElementById('overlay');
+    const menuIcon = document.getElementById('menu-icon');
+    
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.remove('translate-x-full');
+      mobileMenu.classList.add('translate-x-0');
+      overlay.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    });
+    
+    closeMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.remove('translate-x-0');
+      mobileMenu.classList.add('translate-x-full');
+      overlay.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    });
+    
+    overlay.addEventListener('click', () => {
+      mobileMenu.classList.remove('translate-x-0');
+      mobileMenu.classList.add('translate-x-full');
+      overlay.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    });
+    
+    // Close menu when a nav link is clicked
+    document.querySelectorAll('#mobile-menu .nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('translate-x-0');
+        mobileMenu.classList.add('translate-x-full');
+        overlay.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      });
+    });
+    
+    // Exploit button click handler (both desktop and mobile)
+    const ExploitButton = document.getElementById('ExploitButton');
+    const mobileExploitButton = document.getElementById('mobile-ExploitButton');
+    
+    function handleExploit() {
+      // Add your Exploit logic here
+      console.log('Exploit clicked');
+    }
+    
+    if (ExploitButton) ExploitButton.addEventListener('click', handleExploit);
+    if (mobileExploitButton) mobileExploitButton.addEventListener('click', handleExploit);
+  </script>
+
+  <script id="preloader-script">
+    document.addEventListener('DOMContentLoaded', function() {
+    const preloader = document.querySelector('.preloader');
+    const progressBar = document.querySelector('.progress-bar');
+    const progressText = document.querySelector('.progress-text');
+    let progress = 0;
+    const interval = setInterval(() => {
+    progress += Math.floor(Math.random() * 10) + 1;
+    if (progress > 100) progress = 100;
+    progressBar.style.width = `${progress}%`;
+    progressText.textContent = `${progress}%`;
+    if (progress === 100) {
+    clearInterval(interval);
+    setTimeout(() => {
+    preloader.style.opacity = '0';
+    setTimeout(() => {
+    preloader.style.display = 'none';
+    }, 500);
+    }, 500);
+    }
+    }, 200);
+    });
+    </script>
+
+
+   <script id="navigation-script">
+document.addEventListener('DOMContentLoaded', function () {
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  function setActiveLink() {
+    const scrollPosition = window.scrollY;
+    document.querySelectorAll('section[id]').forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      const sectionHeight = section.offsetHeight;
+      const sectionId = section.getAttribute('id');
+
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        navLinks.forEach(link => {
+          link.classList.remove('active-link');
+          if (link.getAttribute('href') === `#${sectionId}`) {
+            link.classList.add('active-link');
+          }
+        });
+      }
+    });
+  }
+
+  window.addEventListener('scroll', setActiveLink);
+  setActiveLink();
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href');
+
+      // Only run smooth scroll if it's an internal section
+      if (targetId.startsWith('#')) {
+        const targetSection = document.querySelector(targetId);
+        if (targetSection) {
+          e.preventDefault();
+          window.scrollTo({
+            top: targetSection.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      }
+      // Else (external link like "about.html") — no preventDefault, allow default behavior
+    });
+  });
+});
+</script>
+
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/687a32d03090ca19169fa809/1j0eld0e5';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+</body>
+</html>

@@ -1,0 +1,656 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prabeen-Resume</title>
+<link rel="icon" type="image/png" href="./img/logo.jpeg">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#1a237e',secondary:'#2196f3',accent:'#7c4dff',lavender:'#e6e6fa'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Poppins', sans-serif;
+scroll-behavior: smooth;
+}
+.preloader {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: #0f172a;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+z-index: 9999;
+transition: opacity 0.5s ease-out;
+}
+.preloader-text {
+font-family: 'Pacifico', serif;
+font-size: 3rem;
+color: white;
+margin-bottom: 2rem;
+background: linear-gradient(to right, #2196f3, #7c4dff);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+.progress-container {
+width: 300px;
+height: 8px;
+background: rgba(255, 255, 255, 0.1);
+border-radius: 4px;
+overflow: hidden;
+margin-bottom: 1rem;
+}
+.progress-bar {
+height: 100%;
+width: 0%;
+background: linear-gradient(to right, #2196f3, #7c4dff);
+transition: width 0.5s ease;
+}
+.progress-text {
+color: white;
+font-size: 1rem;
+}
+.nav-link {
+position: relative;
+}
+.nav-link::after {
+content: '';
+position: absolute;
+width: 0;
+height: 2px;
+bottom: -4px;
+left: 0;
+background: #e6e6fa;
+transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+width: 100%;
+}
+.active-link::after {
+width: 100%;
+}
+.skill-card {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.skill-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 25px rgba(124, 77, 255, 0.2);
+}
+.project-card {
+overflow: hidden;
+position: relative;
+}
+.project-card {
+position: relative;
+}
+.project-card img {
+transition: opacity 0.3s ease;
+}
+.project-card:hover img {
+opacity: 0.1;
+}
+.project-overlay {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 64%;
+display: flex;
+justify-content: center;
+align-items: center;
+opacity: 0;
+transition: opacity 0.3s ease;
+}
+.project-card:hover .project-overlay {
+opacity: 1;
+}
+.certificate-card {
+overflow: hidden;
+position: relative;
+}
+.certificate-overlay {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(26, 35, 126, 0.9);
+display: flex;
+justify-content: center;
+align-items: center;
+opacity: 0;
+transition: opacity 0.3s ease;
+}
+.certificate-card:hover .certificate-overlay {
+opacity: 1;
+}
+.modal {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.8);
+z-index: 1000;
+justify-content: center;
+align-items: center;
+}
+.modal-content {
+position: relative;
+max-width: 90%;
+max-height: 90%;
+}
+.close-modal {
+position: absolute;
+top: -40px;
+right: 0;
+color: white;
+font-size: 30px;
+cursor: pointer;
+}
+.service-card {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 25px rgba(124, 77, 255, 0.2);
+}
+.social-icon {
+transition: transform 0.3s ease, color 0.3s ease;
+}
+.social-icon:hover {
+transform: translateY(-3px);
+}
+.profile-image {
+position: relative;
+transition: transform 0.3s ease;
+}
+.profile-image:hover {
+transform: scale(1.03);
+}
+.experience-badge {
+position: absolute;
+bottom: 20px;
+right: 20px;
+background: linear-gradient(to right, #2196f3, #7c4dff);
+color: white;
+padding: 8px 16px;
+border-radius: 20px;
+font-weight: 600;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+animation: badgeMove 2s ease-in-out infinite;
+}
+@keyframes badgeMove {
+0% {
+transform: translateX(0);
+}
+50% {
+transform: translateX(-20px);
+}
+100% {
+transform: translateX(0);
+}
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+.custom-checkbox {
+appearance: none;
+-webkit-appearance: none;
+width: 20px;
+height: 20px;
+border: 2px solid #2196f3;
+border-radius: 4px;
+outline: none;
+cursor: pointer;
+position: relative;
+}
+.custom-checkbox:checked {
+background-color: #2196f3;
+}
+.custom-checkbox:checked::after {
+content: '';
+position: absolute;
+top: 3px;
+left: 6px;
+width: 6px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+.custom-switch {
+position: relative;
+display: inline-block;
+width: 50px;
+height: 24px;
+}
+.custom-switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.switch-slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #ccc;
+transition: .4s;
+border-radius: 34px;
+}
+.switch-slider:before {
+position: absolute;
+content: "";
+height: 16px;
+width: 16px;
+left: 4px;
+bottom: 4px;
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+input:checked + .switch-slider {
+background-color: #2196f3;
+}
+input:checked + .switch-slider:before {
+transform: translateX(26px);
+}
+/* Video Background Styles */
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.video-background video {
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+ 
+}
+
+.home-content {
+  position: relative;
+  z-index: 1;
+}
+</style>
+</head>
+<body class="bg-white">
+
+  <div class="video-background">
+    <video autoplay muted loop id="bg-video">
+        <source src="./img/effect.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    <div class="video-overlay"></div>
+</div>
+
+<!-- Navigation Bar -->
+<nav class="fixed top-0 left-0 w-full z-50 shadow-md" style="background: linear-gradient(to right, #f0db3c, #7c4dff)";>
+    <div class="container mx-auto px-6 py-3 flex items-center justify-between">
+      <a href="#" class="text-white font-['Pacifico'] text-2xl">Prabeen
+</a>
+      
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="index.html" class="nav-link text-white hover:text-lavender transition-colors ">Home</a>
+        <a href="about.html" class="nav-link text-white hover:text-lavender transition-colors ">About</a>
+        <a href="resume.html" class="nav-link text-white hover:text-lavender transition-colors active-link">Resume</a>
+        <a href="skills.html" class="nav-link text-white hover:text-lavender transition-colors">Skills</a>
+        <a href="projects.html" class="nav-link text-white hover:text-lavender transition-colors ">Projects</a>
+        <a href="certificates.html" class="nav-link text-white hover:text-lavender transition-colors ">Certificates</a>
+        <a href="contact.html" class="nav-link text-white hover:text-lavender transition-colors ">Contact</a>
+      </div>
+      
+      <div class="flex items-center gap-4">
+        <button id="ExploitButton" class="hidden md:block bg-white text-primary px-6 py-2 !rounded-button font-medium hover:bg-lavender transition-colors whitespace-nowrap"><a href="sign-in.html" target="_blank">Exploit</a></button>
+        
+        <!-- Mobile Toggle Button -->
+        <button id="mobile-menu-button" class="md:hidden w-8 h-8 flex items-center justify-center text-white cursor-pointer">
+          <i class="ri-menu-line ri-lg" id="menu-icon"></i>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu (Hidden by default) -->
+    <div id="mobile-menu" class="md:hidden fixed top-0 right-0 h-full w-64 bg-gradient-to-b from-primary to-accent shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-50">
+      <div class="flex justify-end p-4">
+        <button id="close-menu-button" class="w-8 h-8 flex items-center justify-center text-white cursor-pointer">
+          <i class="ri-close-line ri-lg"></i>
+        </button>
+      </div>
+      <div class="flex flex-col space-y-6 px-6 py-4">
+        <a href="index.html" class="nav-link text-white hover:text-lavender transition-colors ">Home</a>
+        <a href="about.html" class="nav-link text-white hover:text-lavender transition-colors">About</a>
+        <a href="resume.html" class="nav-link text-white hover:text-lavender transition-colors active-link">Resume</a>
+        <a href="skills.html" class="nav-link text-white hover:text-lavender transition-colors">Skills</a>
+        <a href="projects.html" class="nav-link text-white hover:text-lavender transition-colors ">Projects</a>
+        <a href="certificates.html" class="nav-link text-white hover:text-lavender transition-colors">Certificates</a>
+        <a href="contact.html" class="nav-link text-white hover:text-lavender transition-colors ">Contact</a>
+        <button id="mobile-ExploitButton" class="bg-white text-primary px-6 py-2 rounded-button font-medium hover:bg-lavender transition-colors whitespace-nowrap w-full"><a href="sign-in.html" target="_blank">Exploit</a></button>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Overlay (Hidden by default) -->
+  <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
+
+
+<!-- Resume Section -->
+<section id="resume" class="py-20">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-16 text-gray-800 relative">
+        <span class="relative z-10 px-4 bg-white">My <span class="text-primary">resume</span></span>
+        <span class="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent -z-1"></span>
+      </h2>
+    <div class="flex flex-col md:flex-row gap-8">
+    <!-- Resume Preview -->
+    <div class="w-full md:w-2/3 bg-white rounded-xl shadow-lg p-8">
+    <div class="flex items-center mb-8">
+    <i class="ri-file-text-line ri-2x text-primary mr-4"></i>
+    <h3 class="text-2xl font-semibold text-gray-800">Resume Preview</h3>
+    </div>
+    <p class="text-gray-600 mb-8">My resume includes detailed information about:</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+    <div class="space-y-4">
+    <div class="flex items-start">
+    <i class="ri-briefcase-line text-primary mt-1 mr-3"></i>
+    <div>
+    <h4 class="font-semibold text-gray-800">Professional Experience</h4>
+    <p class="text-gray-600">Detailed work history and responsibilities</p>
+    </div>
+    </div>
+    <div class="flex items-start">
+    <i class="ri-graduation-cap-line text-primary mt-1 mr-3"></i>
+    <div>
+    <h4 class="font-semibold text-gray-800">Educational Background</h4>
+    <p class="text-gray-600">Academic qualifications and certifications</p>
+    </div>
+    </div>
+    <div class="flex items-start">
+    <i class="ri-code-box-line text-primary mt-1 mr-3"></i>
+    <div>
+    <h4 class="font-semibold text-gray-800">Technical Skills</h4>
+    <p class="text-gray-600">Programming languages and tools proficiency</p>
+    </div>
+    </div>
+    <div class="flex items-start">
+    <i class="ri-medal-line text-primary mt-1 mr-3"></i>
+    <div>
+    <h4 class="font-semibold text-gray-800">Accomplishments</h4>
+    <p class="text-gray-600">Projects and achievements</p>
+    </div>
+    </div>
+    <div class="flex items-start">
+    <i class="ri-contacts-line text-primary mt-1 mr-3"></i>
+    <div>
+    <h4 class="font-semibold text-gray-800">References</h4>
+    <p class="text-gray-600">Professional references and contacts</p>
+    </div>
+    </div>
+    </div>
+    </div>
+   <!-- Buttons Container -->
+   <div class="flex flex-col sm:flex-row gap-4">
+    <!-- View Resume Link styled as button -->
+    <a href="./img/sooon" target="_blank" 
+       class="bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-accent transition-colors whitespace-nowrap flex items-center justify-center">
+      <i class="ri-eye-line mr-2"></i>
+      <span>View Resume</span>
+    </a>
+  
+    <!-- Download PDF Link styled as button -->
+    <a href="./img/soon" download 
+       class="border-2 border-primary text-primary px-6 py-3 !rounded-button font-medium hover:bg-primary hover:text-white transition-colors whitespace-nowrap flex items-center justify-center">
+      <i class="ri-download-line mr-2"></i>
+      <span>Download CV</span>
+    </a>
+  </div>
+  
+    
+    </div>
+    <!-- LinkedIn Preview -->
+    <div class="w-full md:w-1/3 bg-white rounded-xl shadow-lg p-8">
+    <div class="flex items-center mb-8">
+    <i class="ri-linkedin-box-line ri-2x text-[#0A66C2] mr-4"></i>
+    <h3 class="text-2xl font-semibold text-gray-800">LinkedIn</h3>
+    </div>
+    <div class="text-center mb-8">
+      <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-4 border-4 border-blue-400">
+        <img src="./img/linkedin.jpg" alt="Prabeen
+" class="w-full h-full object-cover object-top">
+      </div>
+      
+    <h4 class="text-xl font-semibold text-gray-800 mb-2">     PRABEEN ▷</h4>
+    
+    <div class="mt-4 flex flex-wrap gap-2 justify-center">
+      <span class="px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-sm whitespace-nowrap flex items-center gap-1">
+        <i class="ri-paint-brush-line"></i> WEB DESIGNER
+      </span>
+  
+    <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm whitespace-nowrap flex items-center gap-1">
+  <i class="ri-gamepad-line"></i> GAME DEVELOPER
+</span>
+
+<span class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm whitespace-nowrap flex items-center gap-1">
+  <i class="ri-shield-keyhole-line"></i> PENTESTER
+</span>
+
+<span class="px-3 py-1 bg-purple-200 text-purple-800 rounded-full text-sm whitespace-nowrap flex items-center gap-1">
+  <i class="ri-bluetooth-line"></i> PURPLE TEAM
+</span>
+
+<span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm whitespace-nowrap flex items-center gap-1">
+  <i class="ri-megaphone-line"></i> DIGITAL MARKETER
+</span>
+
+<span class="px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-sm whitespace-nowrap flex items-center gap-1">
+  <i class="ri-instagram-line"></i> SOCIAL MEDIA STRATEGIST
+</span>
+
+<span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm whitespace-nowrap flex items-center gap-1">
+  <i class="ri-brain-line"></i> AI & ML ENTHUSIAST
+</span>
+
+<span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm whitespace-nowrap flex items-center gap-1">
+  <i class="ri-terminal-window-line"></i> BUG BOUNTY HUNTER
+</span>
+
+<span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm whitespace-nowrap flex items-center gap-1">
+  <i class="ri-global-line"></i> SEO SPECIALIST
+</span>
+
+<span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-sm whitespace-nowrap flex items-center gap-1">
+  <i class="ri-lightbulb-flash-line"></i> CREATIVE STRATEGIST
+</span>
+
+<span class="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-sm whitespace-nowrap flex items-center gap-1">
+  <i class="ri-fingerprint-line"></i> FORENSIC ANALYST
+</span>
+
+<span class="px-3 py-1 bg-lime-100 text-lime-700 rounded-full text-sm whitespace-nowrap flex items-center gap-1">
+  <i class="ri-user-star-line"></i> MODELING
+</span>
+
+<span class="px-3 py-1 bg-teal-100 text-teal-600 rounded-full text-sm whitespace-nowrap flex items-center gap-1">
+        <i class="ri-brush-line"></i> GRAPHICS DESIGNER
+      </span>
+  
+    
+    </div>
+    
+    </div>
+    <a href="https://www.linkedin.com/in/prabeen-%E2%96%B7-ab2859333/" target="_blank">
+    <button class="w-full bg-[#0A66C2] text-white px-6 py-3 !rounded-button font-medium hover:bg-[#004182] transition-colors whitespace-nowrap flex items-center justify-center mt-4">
+    <i class="ri-linkedin-box-fill mr-2"></i>
+    <span>View Profile</span>
+    </button></a>
+    </div>
+    </div>
+    </div>
+    </section>
+
+
+
+
+<!-- Footer -->
+
+<footer class="text-white py-12" style="background: linear-gradient(to right, #f0db3c, #7c4dff)";>
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Social Media (All Icons) -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">Follow Me</h3>
+        <div class="grid grid-cols-4 gap-3">
+            <!-- Facebook -->
+          <a href="https://www.facebook.com/prabeen.923860" target="_blank" class="p-2 bg-blue-600 hover:bg-blue-700 rounded-full flex justify-center items-center transition-colors w-10 h-10">
+            <i class="ri-facebook-line"></i>
+          </a>
+          <!-- LinkedIn -->
+           <a href="https://www.linkedin.com/in/prabeen-%E2%96%B7-ab2859333/" target="_blank" class="p-2 bg-blue-800 hover:bg-blue-900 rounded-full flex justify-center items-center transition-colors w-10 h-10">
+            <i class="ri-linkedin-line"></i>
+          </a>
+          <!-- Telegram -->
+          <a href="9813349397" target="_blank" class="p-2 bg-sky-500 hover:bg-sky-600 rounded-full flex justify-center items-center transition-colors w-10 h-10">
+            <i class="ri-telegram-line"></i>
+          </a> 
+          <!-- X -->
+           <a href="https://x.com/_Prabeen" target="_blank" class="p-2 bg-black hover:bg-gray-800 rounded-full flex justify-center items-center transition-colors w-10 h-10">
+  <i class="ri-twitter-x-line"></i>
+</a>
+        </div>
+      
+      </div>
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+        <ul class="space-y-2">
+          <li><a href="index.html" class="hover:text-indigo-300 transition-colors">Home</a></li>
+          <li><a href="about.html" class="hover:text-indigo-300 transition-colors">About</a></li>
+          <li><a href="projects.html" class="hover:text-indigo-300 transition-colors">Projects</a></li>
+          <li><a href="contact.html" class="hover:text-indigo-300 transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h3 class="text-xl font-bold mb-4 text-white">Get in Touch</h3>
+        <ul class="space-y-3">
+          <li class="flex items-center">
+            <i class="ri-mail-line mr-2 text-indigo-300"></i>
+            <a href="mailto:iglhoraa@gmail.com" class="text-white no-underline hover:no-underline">
+              iglhoraa@gmail.com
+            </a>
+          </li>
+          <li class="flex items-center">
+            <i class="ri-phone-line mr-2 text-indigo-300"></i>
+            <a href="tel:+9779813349397" class="text-white no-underline hover:no-underline">
+              +977 9813349397
+            </a>
+          </li>
+          <li class="flex items-center">
+            <i class="ri-map-pin-line mr-2 text-indigo-300"></i>
+            <a href="https://maps.app.goo.gl/wJ5MpP4ufX52VdAs5" target="_blank" class="text-white no-underline hover:no-underline">
+              Bhaktapur-44800 Bagmati, Nepal
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+    </div>
+
+    <!-- Copyright -->
+    <div class="mt-12 pt-6 border-t border-indigo-800 text-center">
+     © 2023–2025 Prabeen. All rights reserved. 
+  <a href="/terms">Terms</a> • <a href="/privacy">Privacy</a> • <a href="/licenses">Licenses</a>
+    </div>
+  </div>
+</footer>
+
+
+
+<script>
+    // Mobile menu functionality
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const closeMenuButton = document.getElementById('close-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const overlay = document.getElementById('overlay');
+    const menuIcon = document.getElementById('menu-icon');
+    
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.remove('translate-x-full');
+      mobileMenu.classList.add('translate-x-0');
+      overlay.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    });
+    
+    closeMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.remove('translate-x-0');
+      mobileMenu.classList.add('translate-x-full');
+      overlay.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    });
+    
+    overlay.addEventListener('click', () => {
+      mobileMenu.classList.remove('translate-x-0');
+      mobileMenu.classList.add('translate-x-full');
+      overlay.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    });
+    
+    // Close menu when a nav link is clicked
+    document.querySelectorAll('#mobile-menu .nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('translate-x-0');
+        mobileMenu.classList.add('translate-x-full');
+        overlay.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      });
+    });
+    
+    // Exploit button click handler (both desktop and mobile)
+    const ExploitButton = document.getElementById('ExploitButton');
+    const mobileExploitButton = document.getElementById('mobile-ExploitButton');
+    
+    function handleExploit() {
+      // Add your Exploit logic here
+      console.log('Exploit clicked');
+    }
+    
+    if (ExploitButton) ExploitButton.addEventListener('click', handleExploit);
+    if (mobileExploitButton) mobileExploitButton.addEventListener('click', handleExploit);
+  </script>
+
+
+

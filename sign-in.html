@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>IGL_HORAA- Big project coming soon</title>
+  <link rel="icon" type="image/png" href="./img/logo.jpeg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet" />
+  <style>
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    .blinking { animation: blink 1s infinite; }
+    .floating { animation: float 3s ease-in-out infinite; }
+    .pulse { animation: pulse 2s ease-in-out infinite; }
+    .rotating { animation: rotate 10s linear infinite; }
+    
+    body {
+      background: linear-gradient(-45deg, #1a1a2e, #16213e, #0f3460, #533483);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
+    
+    .glow {
+      box-shadow: 0 0 15px rgba(138, 43, 226, 0.7);
+    }
+    
+    .progress-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    
+    .progress-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #7e22ce;
+      opacity: 0.3;
+    }
+    
+    .progress-dot.active {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+    
+    .circle-animation {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
+  <!-- Floating circles in background -->
+  <div class="circle-animation w-64 h-64 bg-purple-900 opacity-10 -left-32 -top-32 floating"></div>
+  <div class="circle-animation w-96 h-96 bg-indigo-900 opacity-10 -right-48 bottom-0 floating" style="animation-delay: 0.5s;"></div>
+  <div class="circle-animation w-80 h-80 bg-pink-900 opacity-10 left-1/4 bottom-1/3 floating" style="animation-delay: 1s;"></div>
+  
+  <!-- Main Card -->
+  <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 max-w-md w-full text-center border border-white/20 glow pulse relative overflow-hidden">
+    <!-- Rotating circle decoration -->
+    <div class="absolute -top-20 -right-20 w-40 h-40 bg-purple-500/10 rounded-full rotating"></div>
+    
+    <!-- Top Image -->
+    <div class="relative inline-block mb-6">
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/3703/3703313.png"
+        alt="Launch"
+        class="w-24 h-24 mx-auto floating"
+      />
+      <div class="absolute inset-0 rounded-full border-2 border-purple-500/30 floating" style="animation-delay: 0.3s;"></div>
+    </div>
+
+    <!-- Boost Title -->
+    <h2 class="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500 mb-4">
+      <span class="inline-block floating" style="animation-delay: 0.2s;">
+        <i class="ri-rocket-2-line align-middle mr-2"></i>Boosting Up!
+      </span>
+    </h2>
+
+    <!-- Boost Description -->
+    <div class="bg-black/20 rounded-xl p-4 mb-6 border border-white/10">
+      <p class="text-white/90 font-medium leading-relaxed">
+        🚀 My Next Big Project is in Development<br />
+        🔥 Massive Launch Coming Soon!<br />
+        💡 Stay tuned for something 
+        <span class="font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-pink-400">extraordinary</span>!
+      </p>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="relative">
+      <div class="w-full bg-black/30 rounded-full h-3 mb-2 overflow-hidden">
+        <div
+          id="progress-bar"
+          class="bg-gradient-to-r from-purple-500 to-pink-500 h-3 w-0 rounded-full transition-all duration-700 relative"
+        >
+          <div class="absolute right-0 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-white rounded-full"></div>
+        </div>
+      </div>
+      <p id="progress-text" class="text-sm text-white/80 mb-1">Initializing systems... 0%</p>
+      
+      <!-- Animated dots -->
+      <div class="progress-dots">
+        <div class="progress-dot dot-1"></div>
+        <div class="progress-dot dot-2"></div>
+        <div class="progress-dot dot-3"></div>
+        <div class="progress-dot dot-4"></div>
+        <div class="progress-dot dot-5"></div>
+      </div>
+    </div>
+
+    <!-- Back to Portfolio Button -->
+    <a
+      href="index.html"
+      class="inline-block mt-8 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-3 rounded-full font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 hover:scale-105"
+    >
+      <i class="ri-arrow-left-line mr-2"></i>Back to Portfolio
+    </a>
+    
+    <!-- Social links -->
+    <div class="mt-6 flex justify-center space-x-4">
+       <a href="https://www.facebook.com/prabeen.923860" target="_blank" class="p-2 bg-blue-600 hover:bg-blue-700 rounded-full flex justify-center items-center transition-colors w-10 h-10">
+            <i class="ri-facebook-line"></i>
+          </a>
+          <!-- LinkedIn -->
+           <a href="https://www.linkedin.com/in/prabeen-%E2%96%B7-ab2859333/" target="_blank" class="p-2 bg-blue-800 hover:bg-blue-900 rounded-full flex justify-center items-center transition-colors w-10 h-10">
+            <i class="ri-linkedin-line"></i>
+          </a>
+          <!-- Telegram -->
+          <a href="9813349397" target="_blank" class="p-2 bg-sky-500 hover:bg-sky-600 rounded-full flex justify-center items-center transition-colors w-10 h-10">
+            <i class="ri-telegram-line"></i>
+          </a> 
+          <!-- X -->
+           <a href="https://x.com/_Prabeen" target="_blank" class="p-2 bg-black hover:bg-gray-800 rounded-full flex justify-center items-center transition-colors w-10 h-10">
+  <i class="ri-twitter-x-line"></i>
+</a>
+    </div>
+  </div>
+
+  <!-- JS: Animate progress and effects -->
+  <script>
+    const progressBar = document.getElementById("progress-bar");
+    const progressText = document.getElementById("progress-text");
+    const dots = document.querySelectorAll('.progress-dot');
+    
+    // Status messages
+    const statusMessages = [
+      "Initializing systems...",
+      "Loading assets...",
+      "Optimizing performance...",
+      "Finalizing components...",
+      "Almost there..."
+    ];
+    
+    let progress = 0;
+    let dotCounter = 0;
+    
+    // Animate dots
+    const dotInterval = setInterval(() => {
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[dotCounter % 5].classList.add('active');
+      dotCounter++;
+    }, 300);
+    
+    // Animate progress
+    const interval = setInterval(() => {
+      if (progress < 100) {
+        progress++;
+        progressBar.style.width = progress + "%";
+        
+        // Update status message based on progress
+        if (progress < 20) {
+          progressText.textContent = `${statusMessages[0]} ${progress}%`;
+        } else if (progress < 40) {
+          progressText.textContent = `${statusMessages[1]} ${progress}%`;
+        } else if (progress < 60) {
+          progressText.textContent = `${statusMessages[2]} ${progress}%`;
+        } else if (progress < 80) {
+          progressText.textContent = `${statusMessages[3]} ${progress}%`;
+        } else {
+          progressText.textContent = `${statusMessages[4]} ${progress}%`;
+        }
+        
+        // Add blinking effect at 50%
+        if (progress === 50) {
+          progressBar.classList.add("blinking");
+        }
+        // Remove blinking and add pulse at 100%
+        if (progress === 100) {
+          progressBar.classList.remove("blinking");
+          progressBar.classList.add("pulse");
+          progressText.textContent = "Project is in testing and processing! 🚀";
+          clearInterval(interval);
+        }
+      }
+    }, 50);
+    
+    // Create random floating circles
+    function createFloatingCircle() {
+      const circle = document.createElement('div');
+      circle.className = 'circle-animation absolute bg-white/5 rounded-full';
+      
+      // Random size between 10 and 100px
+      const size = Math.random() * 90 + 10;
+      circle.style.width = `${size}px`;
+      circle.style.height = `${size}px`;
+      
+      // Random position
+      circle.style.left = `${Math.random() * 100}%`;
+      circle.style.top = `${Math.random() * 100}%`;
+      
+      // Random animation duration and delay
+      const duration = Math.random() * 10 + 5;
+      const delay = Math.random() * 5;
+      circle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+      
+      document.body.appendChild(circle);
+      
+      // Remove circle after animation completes to prevent DOM clutter
+      setTimeout(() => {
+        circle.remove();
+      }, (duration + delay) * 1000);
+    }
+    
+    // Create initial floating circles
+    for (let i = 0; i < 10; i++) {
+      setTimeout(createFloatingCircle, i * 1000);
+    }
+    
+    // Continue creating circles periodically
+    setInterval(createFloatingCircle, 3000);
+  </script>
+</body>
+</html>

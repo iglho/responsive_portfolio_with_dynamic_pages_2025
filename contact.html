@@ -1,0 +1,679 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prabeen-Contact</title>
+<link rel="icon" type="image/png" href="./img/logo.jpeg">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#1a237e',secondary:'#2196f3',accent:'#7c4dff',lavender:'#e6e6fa'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Poppins', sans-serif;
+scroll-behavior: smooth;
+}
+.preloader {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: #0f172a;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+z-index: 9999;
+transition: opacity 0.5s ease-out;
+}
+.preloader-text {
+font-family: 'Pacifico', serif;
+font-size: 3rem;
+color: white;
+margin-bottom: 2rem;
+background: linear-gradient(to right, #2196f3, #7c4dff);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+.progress-container {
+width: 300px;
+height: 8px;
+background: rgba(255, 255, 255, 0.1);
+border-radius: 4px;
+overflow: hidden;
+margin-bottom: 1rem;
+}
+.progress-bar {
+height: 100%;
+width: 0%;
+background: linear-gradient(to right, #2196f3, #7c4dff);
+transition: width 0.5s ease;
+}
+.progress-text {
+color: white;
+font-size: 1rem;
+}
+.nav-link {
+position: relative;
+}
+.nav-link::after {
+content: '';
+position: absolute;
+width: 0;
+height: 2px;
+bottom: -4px;
+left: 0;
+background: #e6e6fa;
+transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+width: 100%;
+}
+.active-link::after {
+width: 100%;
+}
+.skill-card {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.skill-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 25px rgba(124, 77, 255, 0.2);
+}
+.project-card {
+overflow: hidden;
+position: relative;
+}
+.project-card {
+position: relative;
+}
+.project-card img {
+transition: opacity 0.3s ease;
+}
+.project-card:hover img {
+opacity: 0.1;
+}
+.project-overlay {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 64%;
+display: flex;
+justify-content: center;
+align-items: center;
+opacity: 0;
+transition: opacity 0.3s ease;
+}
+.project-card:hover .project-overlay {
+opacity: 1;
+}
+.certificate-card {
+overflow: hidden;
+position: relative;
+}
+.certificate-overlay {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(26, 35, 126, 0.9);
+display: flex;
+justify-content: center;
+align-items: center;
+opacity: 0;
+transition: opacity 0.3s ease;
+}
+.certificate-card:hover .certificate-overlay {
+opacity: 1;
+}
+.modal {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.8);
+z-index: 1000;
+justify-content: center;
+align-items: center;
+}
+.modal-content {
+position: relative;
+max-width: 90%;
+max-height: 90%;
+}
+.close-modal {
+position: absolute;
+top: -40px;
+right: 0;
+color: white;
+font-size: 30px;
+cursor: pointer;
+}
+.service-card {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 25px rgba(124, 77, 255, 0.2);
+}
+.social-icon {
+transition: transform 0.3s ease, color 0.3s ease;
+}
+.social-icon:hover {
+transform: translateY(-3px);
+}
+.profile-image {
+position: relative;
+transition: transform 0.3s ease;
+}
+.profile-image:hover {
+transform: scale(1.03);
+}
+.experience-badge {
+position: absolute;
+bottom: 20px;
+right: 20px;
+background: linear-gradient(to right, #2196f3, #7c4dff);
+color: white;
+padding: 8px 16px;
+border-radius: 20px;
+font-weight: 600;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+animation: badgeMove 2s ease-in-out infinite;
+}
+@keyframes badgeMove {
+0% {
+transform: translateX(0);
+}
+50% {
+transform: translateX(-20px);
+}
+100% {
+transform: translateX(0);
+}
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+.custom-checkbox {
+appearance: none;
+-webkit-appearance: none;
+width: 20px;
+height: 20px;
+border: 2px solid #2196f3;
+border-radius: 4px;
+outline: none;
+cursor: pointer;
+position: relative;
+}
+.custom-checkbox:checked {
+background-color: #2196f3;
+}
+.custom-checkbox:checked::after {
+content: '';
+position: absolute;
+top: 3px;
+left: 6px;
+width: 6px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+.custom-switch {
+position: relative;
+display: inline-block;
+width: 50px;
+height: 24px;
+}
+.custom-switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.switch-slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #ccc;
+transition: .4s;
+border-radius: 34px;
+}
+.switch-slider:before {
+position: absolute;
+content: "";
+height: 16px;
+width: 16px;
+left: 4px;
+bottom: 4px;
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+input:checked + .switch-slider {
+background-color: #2196f3;
+}
+input:checked + .switch-slider:before {
+transform: translateX(26px);
+}
+/* Video Background Styles */
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.video-background video {
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+ 
+}
+
+.home-content {
+  position: relative;
+  z-index: 1;
+}
+</style>
+</head>
+<body class="bg-white">
+
+  <div class="video-background">
+    <video autoplay muted loop id="bg-video">
+        <source src="./img/effect.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    <div class="video-overlay"></div>
+</div>
+
+<!-- Navigation Bar -->
+<nav class="fixed top-0 left-0 w-full z-50 shadow-md" style="background: linear-gradient(to right, #e63737, #7c4dff)";>
+    <div class="container mx-auto px-6 py-3 flex items-center justify-between">
+      <a href="#" class="text-white font-['Pacifico'] text-2xl">Prabeen</a>
+      
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="index.html" class="nav-link text-white hover:text-lavender transition-colors ">Home</a>
+        <a href="about.html" class="nav-link text-white hover:text-lavender transition-colors ">About</a>
+        <a href="resume.html" class="nav-link text-white hover:text-lavender transition-colors">Resume</a>
+        <a href="skills.html" class="nav-link text-white hover:text-lavender transition-colors">Skills</a>
+        <a href="projects.html" class="nav-link text-white hover:text-lavender transition-colors">Projects</a>
+        <a href="certificates.html" class="nav-link text-white hover:text-lavender transition-colors ">Certificates</a>
+        <a href="contact.html" class="nav-link text-white hover:text-lavender transition-colors active-link">Contact</a>
+      </div>
+      
+      <div class="flex items-center gap-4">
+        <button id="ExploitButton" class="hidden md:block bg-white text-primary px-6 py-2 !rounded-button font-medium hover:bg-lavender transition-colors whitespace-nowrap"><a href="sign-in.html" target="_blank">Exploit</a></button>
+        
+        <!-- Mobile Toggle Button -->
+        <button id="mobile-menu-button" class="md:hidden w-8 h-8 flex items-center justify-center text-white cursor-pointer">
+          <i class="ri-menu-line ri-lg" id="menu-icon"></i>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu (Hidden by default) -->
+    <div id="mobile-menu" class="md:hidden fixed top-0 right-0 h-full w-64 bg-gradient-to-b from-primary to-accent shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-50">
+      <div class="flex justify-end p-4">
+        <button id="close-menu-button" class="w-8 h-8 flex items-center justify-center text-white cursor-pointer">
+          <i class="ri-close-line ri-lg"></i>
+        </button>
+      </div>
+      <div class="flex flex-col space-y-6 px-6 py-4">
+        <a href="index.html" class="nav-link text-white hover:text-lavender transition-colors ">Home</a>
+        <a href="about.html" class="nav-link text-white hover:text-lavender transition-colors">About</a>
+        <a href="resume.html" class="nav-link text-white hover:text-lavender transition-colors">Resume</a>
+        <a href="skills.html" class="nav-link text-white hover:text-lavender transition-colors">Skills</a>
+        <a href="projects.html" class="nav-link text-white hover:text-lavender transition-colors">Projects</a>
+        <a href="certificates.html" class="nav-link text-white hover:text-lavender transition-colors">Certificates</a>
+        <a href="contact.html" class="nav-link text-white hover:text-lavender transition-colors active-link">Contact</a>
+        <button id="mobile-ExploitButton" class="bg-white text-primary px-6 py-2 rounded-button font-medium hover:bg-lavender transition-colors whitespace-nowrap w-full"><a href="sign-in.html" target="_blank">Exploit</a></button>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Overlay (Hidden by default) -->
+  <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
+
+
+
+<!-- Contact Section -->
+<section id="contact" class="py-20">
+  <div class="container mx-auto px-6">
+    <h2 class="text-4xl font-bold text-center mb-16 text-gray-800 relative">
+      <span class="relative z-10 px-4 bg-white">Contact<span class="text-primary"> Me</span></span>
+      <span class="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent -z-1"></span>
+    </h2>
+
+    <div class="flex flex-col-reverse md:flex-row gap-8">
+
+      <!-- Left Side: Map + Contact Info -->
+      <div class="w-full md:w-1/2 space-y-6">
+        <!-- Google Map -->
+        <div class="h-[380px] rounded-xl overflow-hidden shadow-md">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.332994502868!2d85.39268717520777!3d27.6747186849224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1b00160a1903%3A0xc3c861385ad8d842!2sRadha%20Krishna%20colony%2C%20Radhe%20Radhe!5e0!3m2!1sen!2snp!4v1721350000000!5m2!1sen!2snp"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="bg-white p-6 rounded-xl shadow-md space-y-4">
+          <div class="flex items-center">
+            <div class="w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 text-primary mr-4">
+              <i class="ri-mail-line ri-lg"></i>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-800">Email</h4>
+              <p class="text-gray-600">
+                <a href="mailto:iglhoraa@gmail.com" class="hover:underline">iglhoraa@gmail.com</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-center">
+            <div class="w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 text-primary mr-4">
+              <i class="ri-phone-line ri-lg"></i>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-800">Phone</h4>
+              <p class="text-gray-600">
+                <a href="tel:+9779813349397" class="hover:underline">+977 9813349397</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-center">
+            <div class="w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 text-primary mr-4">
+              <i class="ri-map-pin-line ri-lg"></i>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-800">Location</h4>
+              <p class="text-gray-600">
+                <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.332994502868!2d85.39268717520777!3d27.6747186849224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1b00160a1903%3A0xc3c861385ad8d842!2sRadha%20Krishna%20colony%2C%20Radhe%20Radhe!5e0!3m2!1sen!2snp!4v1721350000000!5m2!1sen!2snp">
+                  Bhaktapur-44800, Bagmati, Nepal
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side: Contact Form -->
+      <div class="w-full md:w-1/2">
+        <div class="bg-white p-8 rounded-xl shadow-md">
+         <!-- ✅ Contact Form with Success Message -->
+         <form id="contactForm" action="https://getform.io/f/adrgwjma" method="POST">
+          <div class="mb-6">
+            <label for="name" class="block text-gray-700 mb-2">Your Name</label>
+            <input type="text" name="name" required
+              class="w-full px-4 py-3 rounded border-none bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Prabeen Khatri">
+          </div>
+    
+          <div class="mb-6">
+            <label for="email" class="block text-gray-700 mb-2">Email Address</label>
+            <input type="email" name="email" required
+              class="w-full px-4 py-3 rounded border-none bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="iglhoraa@gmail.com">
+          </div>
+    
+          <div class="mb-6">
+            <label for="subject" class="block text-gray-700 mb-2">Subject</label>
+            <input type="text" name="subject"
+              class="w-full px-4 py-3 rounded border-none bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Project Inquiry">
+          </div>
+    
+          <div class="mb-6">
+            <label for="message" class="block text-gray-700 mb-2">Message</label>
+            <textarea name="message" rows="5" required
+              class="w-full px-4 py-3 rounded border-none bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+              placeholder="Your message here..."></textarea>
+          </div>
+    
+          <button type="submit"
+          class="w-full bg-gradient-to-r from-primary to-accent text-white py-3 rounded-button font-medium hover:shadow-lg transition-all whitespace-nowrap">
+          Send Message
+          </button>
+    
+          <!-- ✅ Success Message -->
+          <p id="successMessage" class="text-green-600 text-center mt-4 hidden">✅ Your message has been sent successfully!</p>
+        </form>
+      </div>
+    
+      <script>
+        const form = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+    
+        form.addEventListener('submit', async function (e) {
+          e.preventDefault();
+    
+          const formData = new FormData(form);
+          const action = form.getAttribute('action');
+    
+          try {
+            const response = await fetch(action, {
+              method: 'POST',
+              body: formData,
+              headers: { 'Accept': 'application/json' }
+            });
+    
+            if (response.ok) {
+              form.reset();
+              successMessage.classList.remove('hidden');
+            } else {
+              alert("❌ Something went wrong. Please try again.");
+            }
+          } catch (error) {
+            alert("⚠️ Failed to send message. Please check your internet.");
+          }
+        });
+      </script>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+<!-- Footer -->
+
+<footer class="text-white py-12" style="background: linear-gradient(to right, #e63737, #7c4dff)";>
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Social Media (All Icons) -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">Follow Me</h3>
+        <div class="grid grid-cols-4 gap-3">
+            <!-- Facebook -->
+          <a href="https://www.facebook.com/prabeen.923860" target="_blank" class="p-2 bg-blue-600 hover:bg-blue-700 rounded-full flex justify-center items-center transition-colors w-10 h-10">
+            <i class="ri-facebook-line"></i>
+          </a>
+          <!-- LinkedIn -->
+           <a href="https://www.linkedin.com/in/prabeen-%E2%96%B7-ab2859333/" target="_blank" class="p-2 bg-blue-800 hover:bg-blue-900 rounded-full flex justify-center items-center transition-colors w-10 h-10">
+            <i class="ri-linkedin-line"></i>
+          </a>
+          <!-- Telegram -->
+          <a href="9813349397" target="_blank" class="p-2 bg-sky-500 hover:bg-sky-600 rounded-full flex justify-center items-center transition-colors w-10 h-10">
+            <i class="ri-telegram-line"></i>
+          </a> 
+          <!-- X -->
+           <a href="https://x.com/_Prabeen" target="_blank" class="p-2 bg-black hover:bg-gray-800 rounded-full flex justify-center items-center transition-colors w-10 h-10">
+  <i class="ri-twitter-x-line"></i>
+</a>
+        </div>
+      
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+        <ul class="space-y-2">
+          <li><a href="index.html" class="hover:text-indigo-300 transition-colors">Home</a></li>
+          <li><a href="about.html" class="hover:text-indigo-300 transition-colors">About</a></li>
+          <li><a href="projects.html" class="hover:text-indigo-300 transition-colors">Projects</a></li>
+          <li><a href="contact.html" class="hover:text-indigo-300 transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h3 class="text-xl font-bold mb-4 text-white">Get in Touch</h3>
+        <ul class="space-y-3">
+          <li class="flex items-center">
+            <i class="ri-mail-line mr-2 text-indigo-300"></i>
+            <a href="mailto:iglhoraa@gmail.com" class="text-white no-underline hover:no-underline">
+              iglhoraa@gmail.com
+            </a>
+          </li>
+          <li class="flex items-center">
+            <i class="ri-phone-line mr-2 text-indigo-300"></i>
+            <a href="tel:+9779813349397" class="text-white no-underline hover:no-underline">
+              +977 9813349397
+            </a>
+          </li>
+          <li class="flex items-center">
+            <i class="ri-map-pin-line mr-2 text-indigo-300"></i>
+            <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.332994502868!2d85.39268717520777!3d27.6747186849224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1b00160a1903%3A0xc3c861385ad8d842!2sRadha%20Krishna%20colony%2C%20Radhe%20Radhe!5e0!3m2!1sen!2snp!4v1721350000000!5m2!1sen!2snp">
+              Bhaktapur-44800, Bagmati, Nepal
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+    </div>
+
+    <!-- Copyright -->
+    <div class="mt-12 pt-6 border-t border-indigo-800 text-center">
+      <footer>
+  © 2023–2025 Prabeen. All rights reserved. 
+  <a href="/terms">Terms</a> • <a href="/privacy">Privacy</a> • <a href="/licenses">Licenses</a>
+</footer>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script>
+    // Mobile menu functionality
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const closeMenuButton = document.getElementById('close-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const overlay = document.getElementById('overlay');
+    const menuIcon = document.getElementById('menu-icon');
+    
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.remove('translate-x-full');
+      mobileMenu.classList.add('translate-x-0');
+      overlay.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    });
+    
+    closeMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.remove('translate-x-0');
+      mobileMenu.classList.add('translate-x-full');
+      overlay.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    });
+    
+    overlay.addEventListener('click', () => {
+      mobileMenu.classList.remove('translate-x-0');
+      mobileMenu.classList.add('translate-x-full');
+      overlay.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    });
+    
+    // Close menu when a nav link is clicked
+    document.querySelectorAll('#mobile-menu .nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('translate-x-0');
+        mobileMenu.classList.add('translate-x-full');
+        overlay.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      });
+    });
+    
+    // Exploit button click handler (both desktop and mobile)
+    const ExploitButton = document.getElementById('ExploitButton');
+    const mobileExploitButton = document.getElementById('mobile-ExploitButton');
+    
+    function handleExploit() {
+      // Add your Exploit logic here
+      console.log('Exploit clicked');
+    }
+    
+    if (ExploitButton) ExploitButton.addEventListener('click', handleExploit);
+    if (mobileExploitButton) mobileExploitButton.addEventListener('click', handleExploit);
+  </script>
+
+
+
+<script id="certificate-modal-script">
+    document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('certificateModal');
+    const certificateImage = document.getElementById('certificateImage');
+    const closeModal = document.querySelector('.close-modal');
+    const viewButtons = document.querySelectorAll('.view-certificate');
+    const certificateImages = {
+    certificate1: "https://readdy.ai/api/search-image?query=professional%20web%20development%20certificate%20with%20blue%20and%20gold%20accents%2C%20official%20document%20layout%20with%20seal%20and%20signature%2C%20clean%20professional%20design&width=800&height=600&seq=11&orientation=landscape",
+    certificate2: "https://readdy.ai/api/search-image?query=python%20programming%20certificate%20with%20blue%20and%20violet%20design%20elements%2C%20official%20document%20layout%20with%20seal%20and%20signature%2C%20clean%20professional%20design&width=800&height=600&seq=12&orientation=landscape",
+    certificate3: "https://readdy.ai/api/search-image?query=database%20management%20certificate%20with%20blue%20and%20silver%20design%20elements%2C%20official%20document%20layout%20with%20seal%20and%20signature%2C%20clean%20professional%20design&width=800&height=600&seq=13&orientation=landscape",
+    certificate4: "https://readdy.ai/api/search-image?query=UI%20UX%20design%20certificate%20with%20blue%20and%20lavender%20design%20elements%2C%20official%20document%20layout%20with%20seal%20and%20signature%2C%20clean%20professional%20design&width=800&height=600&seq=14&orientation=landscape",
+    certificate5: "https://readdy.ai/api/search-image?query=SEO%20optimization%20certificate%20with%20blue%20and%20green%20design%20elements%2C%20official%20document%20layout%20with%20seal%20and%20signature%2C%20clean%20professional%20design&width=800&height=600&seq=15&orientation=landscape",
+    certificate6: "https://readdy.ai/api/search-image?query=AI%20prompt%20engineering%20certificate%20with%20blue%20and%20purple%20design%20elements%2C%20official%20document%20layout%20with%20seal%20and%20signature%2C%20clean%20professional%20design&width=800&height=600&seq=16&orientation=landscape"
+    };
+    viewButtons.forEach(button => {
+    button.addEventListener('click', function() {
+    const certificateId = this.getAttribute('data-certificate');
+    certificateImage.src = certificateImages[certificateId];
+    modal.style.display = 'flex';
+    });
+    });
+    closeModal.addEventListener('click', function() {
+    modal.style.display = 'none';
+    });
+    window.addEventListener('click', function(event) {
+    if (event.target === modal) {
+    modal.style.display = 'none';
+    }
+    });
+    });
+    </script>
