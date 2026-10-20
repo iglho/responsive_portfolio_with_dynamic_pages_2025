@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Browse Prabeen Khatri's GitHub projects, coding practice, and open-source contributions.">
+<title>Projects | Prabeen Khatri</title>
+<style>
+:root{color-scheme:dark;--bg:#090e1a;--panel:#131d30;--line:#30415c;--text:#e8f0ff;--muted:#a8b8d0;--accent:#6ad9ff}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#172c49,var(--bg) 65%);font:16px/1.6 system-ui,sans-serif;color:var(--text)}a{color:var(--accent)}.wrap{max-width:1100px;margin:auto;padding:36px 22px 90px}.eyebrow{color:var(--accent);letter-spacing:.18em;text-transform:uppercase;font-size:.8rem}h1{font-size:clamp(2.4rem,6vw,4.7rem);line-height:1.1;margin:12px 0}h2{font-size:1.25rem}p{color:var(--muted)}.lead{max-width:680px;font-size:1.1rem}.toolbar{display:flex;flex-wrap:wrap;gap:12px;margin:34px 0 14px}input,select{background:#0d1728;border:1px solid var(--line);border-radius:12px;color:var(--text);padding:13px 15px;font:inherit}input{flex:2;min-width:220px}select{flex:1;min-width:180px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px;margin-top:20px}.card{background:rgba(19,29,48,.9);border:1px solid var(--line);border-radius:18px;padding:23px;display:flex;flex-direction:column;min-height:210px;transition:transform .2s,border-color .2s}.card:hover{transform:translateY(-3px);border-color:var(--accent)}.card h2{margin:8px 0}.card p{flex:1;margin:4px 0 18px}.tag{font-size:.75rem;color:#a3f2db;letter-spacing:.05em}.link{font-weight:700;text-decoration:none}.link:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:3px}.count{font-size:.9rem}.footer{margin-top:48px;border-top:1px solid var(--line);padding-top:20px} .sr-only{position:absolute;left:-9999px}@media(prefers-reduced-motion:reduce){.card{transition:none}}
+</style>
+</head>
+<body><main class="wrap">
+<a href="../index.html">← Back to portfolio</a>
+<div class="eyebrow" style="margin-top:45px">Projects and open source</div>
+<h1>Work, learning,<br>and experiments.</h1>
+<p class="lead">A curated index of repositories by Prabeen Khatri. Projects vary in maturity; community contribution collections are identified separately from standalone applications.</p>
+<div class="toolbar"><label class="sr-only" for="search">Search projects</label><input id="search" type="search" placeholder="Search repositories…" autocomplete="off"><label class="sr-only" for="category">Filter category</label><select id="category"><option value="all">All categories</option><option value="app">Apps & web</option><option value="practice">Programming practice</option><option value="community">Community & open source</option><option value="hacktoberfest">Hacktoberfest</option></select></div>
+<p id="count" class="count" aria-live="polite"></p><section id="projects" class="grid" aria-label="Project repositories"></section>
+<footer class="footer"><p>Projects are linked to their GitHub repositories. No private repositories are displayed. <a href="https://github.com/iglho">GitHub profile ↗</a></p></footer>
+</main><script src="projects.js" defer></script></body></html>
