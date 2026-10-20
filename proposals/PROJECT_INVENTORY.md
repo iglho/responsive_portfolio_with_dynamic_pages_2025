@@ -25,13 +25,9 @@ This inventory records **21 repositories visible to the connected GitHub account
 | [insta](https://github.com/iglho/insta) | App / website | Android Studio project |
 | [portfolio](https://github.com/iglho/portfolio) | Placeholder | Empty at audit time |
 
-## Private repositories — do not publish without explicit permission
+## Private repositories
 
-- `hello-cloudbuild-app`
-- `hello-cloudbuild-env`
-- `sample-app`
-
-These private repository names are recorded for personal organization only; no private source content is published here. **This inventory file is proposed inside a public repository, so review this section before merging.** If you prefer not to disclose private repository names, remove this section.
+Three private repositories were counted in the account inventory but are intentionally omitted from this public document.
 
 ## Curation priorities
 
